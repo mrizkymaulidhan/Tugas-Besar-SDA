@@ -1,17 +1,17 @@
 #include "stackFloat.h"
 
-int isEmpty(Stack S){
-    return (Top(S)==Nil);
+int isEmptyF(stackFloat S){
+    return (Top(S)==Nil)?1:0;
 }
 
-void createStack(Stack *S){
+void createStackF(stackFloat *S){
     Top(*S)=Nil;
 }
 
-address alokasi(infotype X){
-    address p;
+addressF alokasiF(infotypeF X){
+    addressF p;
     
-    p=(address)malloc(sizeof(elmStack));
+    p=(addressF)malloc(sizeof(elmStackF));
     if(p!=Nil){
         Info(p)=X;
         Next(p)=Nil;
@@ -19,56 +19,56 @@ address alokasi(infotype X){
     return p;
 }
 
-void dealokasi(address P){
+void dealokasiF(addressF P){
     free(P);
 }
 
-int findElmAddrs(Stack S, address P){
-    address Q;
+int findElmAddrsF(stackFloat S, addressF P){
+    addressF Q;
     Q=Top(S);
     while(Q!=Nil&&Q!=P)
         Q=Next(Q);
-    return (Q==P);
+    return (Q==P)?1:0;
 }
 
-void pushStack(Stack *S, infotype X){
-    address p;
+void pushStackF(stackFloat *S, infotypeF X){
+    addressF p;
     
-    p=alokasi(X);
+    p=alokasiF(X);
     Next(p)=Top(*S);
     Top(*S)=p;
 }
 
-void popStack(Stack *S, infotype *X){
-    address p;
+void popStackF(stackFloat *S, infotypeF *X){
+    addressF p;
     
-    if(!isEmpty(*S)){
+    if(!isEmptyF(*S)){
         p=Top(*S);
         Top(*S)=Next(p);
-        *X= Info(p);
-        dealokasi(p);
+        *X=Info(p);
+        dealokasiF(p);
     }else{
-        printf("Stack is empty!\n");
+        printf("kesalahan : stackFloat kosong\n");
     }
 }
 
-void printAllInfo(Stack S){
-    address p;
-    if(!isEmpty(S)){
+void printAllInfoF(stackFloat S){
+    addressF p;
+    if(!isEmptyC(S)){
         p=Top(S);
         while(p!=Nil){
-            printf("%.2f ", Info(p));
+            printf("%.2f ",Info(p));
             p=Next(p);       
         }
         printf("\n");
     }else{
-        printf("Stack is empty!\n");
+        printf("stackChar kosong\n");
     }
 }
 
-void deleteAll(Stack *S){
-    infotype x;
-    while(!isEmpty(*S)){
-        popStack(S,&x);
+void deleteAllF(stackFloat *S){
+    infotypeF x;
+    while(!isEmptyF(*S)){
+        popStackF(S,&x);
     }
 }

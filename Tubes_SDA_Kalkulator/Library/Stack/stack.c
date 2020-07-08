@@ -1,7 +1,7 @@
 #include "stack.h"
 
 int isEmpty(Stack S){
-    return (Top(S)==Nil);
+    return (Top(S) == Nil);
 }
 
 void createStack(Stack *S){

@@ -3,7 +3,9 @@
 #define Nil NULL
 #define Info(P) (P)->info
 #define Next(P) (P)->next
-#define Top(S)  (S).top
+#define Top(S)  ((S).top)
+#include<stdio.h>
+#include<stdlib.h>
 
 typedef int infotype;
 typedef struct tElm *address;

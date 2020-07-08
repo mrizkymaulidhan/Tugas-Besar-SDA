@@ -1,62 +1,64 @@
-#ifndef STACKFLOAT_H
-#define STACKFLOAT_H
+#ifndef STACK_FLOAT_H
+#define STACK_FLOAT_H
 #define Nil NULL
 #define Info(P) (P)->info
 #define Next(P) (P)->next
-#define Top(S)  (S).top
+#define Top(S)  ((S).top)
+#include<stdio.h>
+#include<stdlib.h>
 
-typedef float infotype;
-typedef struct tElm *address;
-typedef struct tElm{
-    infotype info;
-    address next;
-} elmStack;
-
+typedef float infotypeF;
+typedef struct tElmF *addressF;
+typedef struct tElmF{
+    infotypeF info;
+    addressF next;
+}elmStackF;
 typedef struct{
-    address top;
-} Stack;
+    addressF top;
+}stackFloat;
 
-int isEmpty(Stack S);
+
+int isEmptyF(stackFloat S);
 /* Mengembalikan nilai boolean true jika stack kosong */
 /* I.S   : S terdefinisi */
 /* F.S   : S diketahui kosong atau tidaknya */
 
-void createStack(Stack *S);
+void createStackF(stackFloat *S);
 /* Membuat sebuah stack kosong */
 /* I.S   : S tidak ada sebelumnya */
 /* F.S   : Menghasilkan stack kosong jika alokasi berhasil */
 
-address alokasi(infotype X);
+addressF alokasiF(infotypeF X);
 /* Menghasilkan address hasil alokasi */
 /* I.S   : X belum dialokasi */
 /* F.S   : Menghasilkan address X yang sudah dialokasi */
 
-void dealokasi(address P);
+void dealokasiF(addressF P);
 /* Membebaskan address P */
 /* I.S   : P pasti ada */
 /* F.S   : P berhasil didealokasi */
 
-int findElmAddrs(Stack S, address P);
+int findElmAddrsF(stackFloat S, addressF P);
 /* Mengembalikan address dari elemen yang dicari */
 /* I.S   : S pasti ada */
 /* F.S   : Menghasilkan address P */
 
-void pushStack(Stack *S, infotype X);
+void pushStackF(stackFloat *S, infotypeF X);
 /* Memasukkan elemen ke dalam stack */
 /* I.S   : S terdefinisi */
 /* F.S   : Elemen X ditambahkan ke dalam stack S */ 
 
-void popStack(Stack *S, infotype *X);
+void popStackF(stackFloat *S, infotypeF *X);
 /* Menghapus elemen dari dalam stack */
 /* I.S   : X merupakan elemen S */
 /* F.S   : Elemen X dihapuskan dari stack S */ 
 
-void deleteAll(Stack *S);
+void deleteAllF(stackFloat *S);
 /* Menghapus semua elemen dari dalam stack */
 /* I.S   : S pasti ada */
 /* F.S   : Semua elemen dihapuskan dari stack S */ 
 
-void printAllInfo(Stack S);
+void printAllInfoF(stackFloat S);
 /* Menempilkan semua elemen stack */
 /* I.S   : S pasti ada */
 /* F.S   : Semua elemen stack S ditampilkan */

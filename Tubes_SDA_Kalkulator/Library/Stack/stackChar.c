@@ -1,74 +1,73 @@
 #include "stackChar.h"
 
-int isEmpty(Stack S){
-    return (Top(S)==Nil);
+int isEmptyC(stackChar S){
+    return (Top(S)==Nil)?1:0;
 }
 
-void createStack(Stack *S){
+void createStackC(stackChar *S){
     Top(*S)=Nil;
 }
 
-address alokasi(infotype X){
-    address p;
+addressC alokasiC(infotypeC X){
+    addressC p;
     
-    p=(address)malloc(sizeof(elmStack));
+    p=(addressC)malloc(sizeof(StackC));
     if(p!=Nil){
         Info(p)=X;
         Next(p)=Nil;
     }
     return p;
 }
-
-void dealokasi(address P){
+void dealokasiC(addressC P){
     free(P);
 }
 
-int findElmAddrs(Stack S, address P){
-    address Q;
+int findElmAddrsC(stackChar S, addressC P){
+    addressC Q;
     Q=Top(S);
     while(Q!=Nil&&Q!=P)
         Q=Next(Q);
-    return (Q==P);
+    return (Q==P)?1:0;
 }
 
-void pushStack(Stack *S, infotype X){
-    address p;
+void pushStackC(stackChar *S, infotypeC X){
+    addressC p;
     
-    p=alokasi(X);
+    p=alokasiC(X);
     Next(p)=Top(*S);
     Top(*S)=p;
 }
 
-void popStack(Stack *S, infotype *X){
-    address p;
+void popStackC(stackChar *S, infotypeC *X){
+    addressC p;
     
-    if(!isEmpty(*S)){
+    if(!isEmptyC(*S)){
         p=Top(*S);
         Top(*S)=Next(p);
-        *X= Info(p);
-        dealokasi(p);
+        *X=Info(p);
+        dealokasiC(p);
     }else{
-        printf("Stack is empty!\n");
+        printf("kesalahan : stackChar kosong\n");
     }
 }
 
-void printAllInfo(Stack S){
-    address p;
-    if(!isEmpty(S)){
+void printAllInfoC(stackChar S){
+    addressC p;
+    if(!isEmptyC(S)){
         p=Top(S);
         while(p!=Nil){
-            printf("%c ", Info(p));
+            printf("%d ",Info(p));
             p=Next(p);       
         }
         printf("\n");
     }else{
-        printf("Stack is empty!\n");
+        printf("kesalahan : stackChar kosong\n");
     }
 }
 
-void deleteAll(Stack *S){
-    infotype x;
-    while(!isEmpty(*S)){
-        popStack(S,&x);
+void deleteAllC(stackChar *S){
+    infotypeC x;
+    while(!isEmptyC(*S)){
+        popStackC(S,&x);
     }
 }
