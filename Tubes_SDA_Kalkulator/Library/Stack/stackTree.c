@@ -1,10 +1,10 @@
-#include "stackFloat.h"
+#include "stackTree.h"
 
-int isEmptyF(stackFloat S){
+int isEmptyF(stackTree S){
     return (Top(S)==Nil)?1:0;
 }
 
-void createStackF(stackFloat *S){
+void createStackF(stackTree *S){
     Top(*S)=Nil;
 }
 
@@ -23,15 +23,15 @@ void dealokasiF(addressF P){
     free(P);
 }
 
-int findElmAddrsF(stackFloat S, addressF P){
+int findElmAddrsF(stackTree S, addressF P){
     addressF Q;
     Q=Top(S);
     while(Q!=Nil&&Q!=P)
         Q=Next(Q);
-    return (Q==P)?1:0;
+    return (Q==P);
 }
 
-void pushStackF(stackFloat *S, infotypeF X){
+void pushStackF(stackTree *S, infotypeF X){
     addressF p;
     
     p=alokasiF(X);
@@ -39,22 +39,27 @@ void pushStackF(stackFloat *S, infotypeF X){
     Top(*S)=p;
 }
 
-void popStackF(stackFloat *S, infotypeF *X){
+void popStackF(stackTree *S, infotypeF X){
     addressF p;
     
     if(!isEmptyF(*S)){
         p=Top(*S);
-        Top(*S)=Next(p);
-        *X=Info(p);
+        if(Next(p)!=Nil){
+	        Top(*S)=Next(p);
+		}
+		else{
+			Top(*S)=Nil;
+		}    
+        X=Info(p);
         dealokasiF(p);
     }else{
-        printf("kesalahan : stackFloat kosong\n");
+        printf("kesalahan : stackTree kosong\n");
     }
 }
 
-void printAllInfoF(stackFloat S){
+void printAllInfoF(stackTree S){
     addressF p;
-    if(!isEmptyC(S)){
+    if(!isEmptyF(S)){
         p=Top(S);
         while(p!=Nil){
             printf("%.2f ",Info(p));
@@ -62,13 +67,23 @@ void printAllInfoF(stackFloat S){
         }
         printf("\n");
     }else{
-        printf("stackChar kosong\n");
+        printf("stackTree kosong\n");
     }
 }
 
-void deleteAllF(stackFloat *S){
+void deleteAllF(stackTree *S){
     infotypeF x;
     while(!isEmptyF(*S)){
-        popStackF(S,&x);
+        popStackF(S,x);
     }
 }
+
+boolean isOperator(char c) 
+{ 
+	if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^'){
+		return true; 
+	}
+	return false; 
+} 
+
+

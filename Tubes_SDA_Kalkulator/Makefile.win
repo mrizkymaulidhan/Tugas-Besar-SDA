@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Library/Stack/stack.o Library/Stack/stackChar.o Library/Stack/stackFloat.o ConvertToPostfix.o
-LINKOBJ  = Library/Stack/stack.o Library/Stack/stackChar.o Library/Stack/stackFloat.o ConvertToPostfix.o
+OBJ      = Library/Stack/stackChar.o Library/Stack/stackTree.o Library/Tree/bintree.o main.o
+LINKOBJ  = Library/Stack/stackChar.o Library/Stack/stackTree.o Library/Tree/bintree.o main.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
@@ -24,14 +24,14 @@ clean: clean-custom
 $(BIN): $(OBJ)
 	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
 
-Library/Stack/stack.o: Library/Stack/stack.c
-	$(CC) -c Library/Stack/stack.c -o Library/Stack/stack.o $(CFLAGS)
-
 Library/Stack/stackChar.o: Library/Stack/stackChar.c
 	$(CC) -c Library/Stack/stackChar.c -o Library/Stack/stackChar.o $(CFLAGS)
 
-Library/Stack/stackFloat.o: Library/Stack/stackFloat.c
-	$(CC) -c Library/Stack/stackFloat.c -o Library/Stack/stackFloat.o $(CFLAGS)
+Library/Stack/stackTree.o: Library/Stack/stackTree.c
+	$(CC) -c Library/Stack/stackTree.c -o Library/Stack/stackTree.o $(CFLAGS)
 
-ConvertToPostfix.o: ConvertToPostfix.c
-	$(CC) -c ConvertToPostfix.c -o ConvertToPostfix.o $(CFLAGS)
+Library/Tree/bintree.o: Library/Tree/bintree.c
+	$(CC) -c Library/Tree/bintree.c -o Library/Tree/bintree.o $(CFLAGS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)

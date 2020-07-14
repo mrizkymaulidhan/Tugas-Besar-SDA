@@ -11,7 +11,7 @@ void createStackC(stackChar *S){
 addressC alokasiC(infotypeC X){
     addressC p;
     
-    p=(addressC)malloc(sizeof(StackC));
+    p=(addressC)malloc(sizeof(elmStackC));
     if(p!=Nil){
         Info(p)=X;
         Next(p)=Nil;

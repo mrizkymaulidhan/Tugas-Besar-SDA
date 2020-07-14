@@ -1,13 +1,16 @@
-#ifndef STACK_FLOAT_H
-#define STACK_FLOAT_H
+#ifndef STACK_TREE_H
+#define STACK_TREE_H
+
 #define Nil NULL
 #define Info(P) (P)->info
 #define Next(P) (P)->next
 #define Top(S)  ((S).top)
+
 #include<stdio.h>
 #include<stdlib.h>
+#include "../Tree/bintree.h"
 
-typedef float infotypeF;
+typedef BinTree infotypeF;
 typedef struct tElmF *addressF;
 typedef struct tElmF{
     infotypeF info;
@@ -15,15 +18,15 @@ typedef struct tElmF{
 }elmStackF;
 typedef struct{
     addressF top;
-}stackFloat;
+}stackTree;
 
 
-int isEmptyF(stackFloat S);
+int isEmptyF(stackTree S);
 /* Mengembalikan nilai boolean true jika stack kosong */
 /* I.S   : S terdefinisi */
 /* F.S   : S diketahui kosong atau tidaknya */
 
-void createStackF(stackFloat *S);
+void createStackF(stackTree *S);
 /* Membuat sebuah stack kosong */
 /* I.S   : S tidak ada sebelumnya */
 /* F.S   : Menghasilkan stack kosong jika alokasi berhasil */
@@ -38,27 +41,27 @@ void dealokasiF(addressF P);
 /* I.S   : P pasti ada */
 /* F.S   : P berhasil didealokasi */
 
-int findElmAddrsF(stackFloat S, addressF P);
+int findElmAddrsF(stackTree S, addressF P);
 /* Mengembalikan address dari elemen yang dicari */
 /* I.S   : S pasti ada */
 /* F.S   : Menghasilkan address P */
 
-void pushStackF(stackFloat *S, infotypeF X);
+void pushStackF(stackTree *S, infotypeF X);
 /* Memasukkan elemen ke dalam stack */
 /* I.S   : S terdefinisi */
 /* F.S   : Elemen X ditambahkan ke dalam stack S */ 
 
-void popStackF(stackFloat *S, infotypeF *X);
+void popStackF(stackTree *S, infotypeF X);
 /* Menghapus elemen dari dalam stack */
 /* I.S   : X merupakan elemen S */
 /* F.S   : Elemen X dihapuskan dari stack S */ 
 
-void deleteAllF(stackFloat *S);
+void deleteAllF(stackTree *S);
 /* Menghapus semua elemen dari dalam stack */
 /* I.S   : S pasti ada */
 /* F.S   : Semua elemen dihapuskan dari stack S */ 
 
-void printAllInfoF(stackFloat S);
+void printAllInfoF(stackTree S);
 /* Menempilkan semua elemen stack */
 /* I.S   : S pasti ada */
 /* F.S   : Semua elemen stack S ditampilkan */
