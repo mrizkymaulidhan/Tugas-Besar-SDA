@@ -10,60 +10,44 @@
 #include<stdlib.h>
 #include "../Tree/bintree.h"
 
-typedef BinTree infotypeF;
-typedef struct tElmF *addressF;
-typedef struct tElmF{
-    infotypeF info;
-    addressF next;
-}elmStackF;
-
+typedef BinTree infotypeStackTree;
+typedef struct tElmST *addressStackTree;
+typedef struct tElmST{
+    infotypeStackTree info;
+    addressStackTree next;
+}elmStackTree;
 typedef struct{
-    addressF top;
+    addressStackTree top;
 }stackTree;
 
-boolean isEmptyF(stackTree S);
-/* Mengembalikan nilai boolean true jika stack kosong */
-/* I.S   : S terdefinisi */
-/* F.S   : S diketahui kosong atau tidaknya */
+boolean isEmptyStackTree(stackTree S);
+/* Mengembalikan true jika Stack Tree kosong.	*/
+/* I.S   : S terdefinisi.					 	*/
+/* F.S   : S diketahui kosong atau tidaknya. 	*/
 
-void createStackF(stackTree *S);
-/* Membuat sebuah stack kosong */
-/* I.S   : S tidak ada sebelumnya */
-/* F.S   : Menghasilkan stack kosong jika alokasi berhasil */
+void createStackTree(stackTree *S);
+/* Membuat sebuah Stack Tree kosong.								*/
+/* I.S   : S belum terdefinisi.										*/
+/* F.S   : Menghasilkan Stack Tree kosong jika alokasi berhasil.	*/
 
-addressF alokasiF(infotypeF X);
-/* Menghasilkan address hasil alokasi */
-/* I.S   : X belum dialokasi */
-/* F.S   : Menghasilkan address X yang sudah dialokasi */
+addressStackTree alokasiStackTree(infotypeStackTree X);
+/* Menghasilkan address hasil alokasi Stack Tree.		 */
+/* I.S   : X belum dialokasi.							 */
+/* F.S   : Menghasilkan address X yang sudah dialokasi.	 */
 
-void dealokasiF(addressF P);
-/* Membebaskan address P */
-/* I.S   : P pasti ada */
-/* F.S   : P berhasil didealokasi */
+void dealokasiStackTree(addressStackTree P);
+/* Membebaskan address P.			*/
+/* I.S   : P sudah dialokasi.		*/
+/* F.S   : P berhasil didealokasi.	*/
 
-boolean findElmAddrsF(stackTree S, addressF P);
-/* Mengembalikan address dari elemen yang dicari */
-/* I.S   : S pasti ada */
-/* F.S   : Menghasilkan address P */
+void pushStackTree(stackTree *S, infotypeStackTree X);
+/* Melakukan push elemen ke bagian Top Stack Tree.	*/
+/* I.S   : S terdefinisi.							*/
+/* F.S   : Elemen X ditambahkan ke bagian Top S.	*/ 
 
-void pushStackF(stackTree *S, infotypeF X);
-/* Memasukkan elemen ke dalam stack */
-/* I.S   : S terdefinisi */
-/* F.S   : Elemen X ditambahkan ke dalam stack S */ 
-
-void popStackF(stackTree *S, infotypeF X);
-/* Menghapus elemen dari dalam stack */
-/* I.S   : X merupakan elemen S */
-/* F.S   : Elemen X dihapuskan dari stack S */ 
-
-void deleteAllF(stackTree *S);
-/* Menghapus semua elemen dari dalam stack */
-/* I.S   : S pasti ada */
-/* F.S   : Semua elemen dihapuskan dari stack S */ 
-
-void printAllInfoF(stackTree S);
-/* Menempilkan semua elemen stack */
-/* I.S   : S pasti ada */
-/* F.S   : Semua elemen stack S ditampilkan */
+void popStackTree(stackTree *S, infotypeStackTree *X);
+/* Menghapus elemen dari bagian Top Stack Tree.	 */
+/* I.S   : Top S tidak kosong dan X elemen S.	 */
+/* F.S   : Elemen X dihapuskan dari Top S.		 */ 
 
 #endif

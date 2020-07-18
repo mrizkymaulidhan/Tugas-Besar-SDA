@@ -32,71 +32,74 @@ typedef struct tElmtNode {
 		} ElmtNode;
 typedef addressTree BinTree;
 
-
-/* ****** MANAJEMEN MEMORY ******* */
 addressTree AlokasiTree(infotypeTree X);
-/* Menghasilkan  addressTree hasil alokasi sebuah  Node 	*/
-/* Jika alokasi berhasil, maka  addressTree tidak NIl   	*/
-/* Info(P)=X, Left(P)=Nil,Right(P)=Nil, dan Count(P)=0 	*/
-/* Jika alokasi gagal mengembalikan Nil  		*/
+/* Menghasilkan address hasil alokasi Expression Tree	*/
+/* I.S   : X belum dialokasi.							*/
+/* F.S   : Menghasilkan address X yang sudah dialokasi.	*/
 
 boolean IsEmptyTree(BinTree P);
-/* Mengembalikan true jika pohon kosong */
-
-void CreateEmptyTree(BinTree *P);
-/* Membuat  Tree   kosong  */
+/* Mengembalikan true jika Expression Tree kosong.	*/
+/* I.S   : P terdefinisi.					  		*/
+/* F.S   : P diketahui kosong atau tidaknya.  		*/
 
 BinTree GetLeft(BinTree P);
-/* Mengirimkan anak kiri pohon biner P  */
+/* Mengembalikan anak kiri Expression Tree.	*/
+/* I.S   : P terdefinisi.				  	*/
+/* F.S   : Anak kiri P dikembalikan.	  	*/
 
 BinTree GetRight(BinTree P);
-/* Mengirimkan anak kanan pohon biner P  */
+/* Mengembalikan anak kanan Expression Tree.	*/
+/* I.S   : P terdefinisi.				  		*/
+/* F.S   : Anak kanan P dikembalikan.	  		*/
 
-/* ******** KONSTRUKTOR ************ */
-BinTree Tree(infotypeTree X, BinTree L, BinTree R);
-/* Menghasilkan sebuah pohon Biner dari A, L, dan R jika AlokasiTree berhasil */
-/* Menghasilkan pohon kosong Nil, jika alokasi gagal 			  */
+void newNode(BinTree *P, infotypeTree X);
+/* Membuat sebuah node Expression Tree baru.	*/
+/* I.S   : P dan X terdefinisi.					*/
+/* F.S   : P berhasil dibuat dengan infotype X.	*/
 
-void MakeTree(infotypeTree Y, BinTree L, BinTree R, BinTree *P);
-/* I.S   : Sembarang 	*/
-/* F.S   : Menghasilkan sebuah pohon biner P dari A,L,dan R, jika alokasi */
-/*         berhasil; Menghasilkan pohon P yang kosong jika alokasi gagal  */
-
-void BuildTree(BinTree *P);
-/* Membentuk sebuah pohon biner P dari pita karakter yang dibaca 	*/
-/* I.S   : Pita berisi 'kostanta' pohon dalam bentuk prefiks, memory 	*/
-/*         pasti cukup, alokasi pasti berhasil 			*/
-/* F.S   : P dibentuk dari Ekspresi dalam Pita   			*/
-
-/* ************* TRAVERSAL   ************* */
-void Preorder(BinTree P);
-/* I.S  : P terdefinisi   					    */
-/* F.S  : semua simpul P sudah diproses secara Preorder; akar, kiri */
-/*        kanan (dengan Proses (P)) 				    */
-
-void Inorder(BinTree P);
-/* I.S  : P terdefinisi   					    */
-/* F.S  : semua simpul P sudah diproses secara Inorder; kiri, akar  */
-/*        kanan (dengan Proses (P)) 				    */
-
-void Postorder(BinTree P);
-/* I.S  : P terdefinisi   					    */
-/* F.S  : semua simpul P sudah diproses secara Postorder; kiri,     */    
-/* 	  kanan, akar (dengan Proses (P)) 			    */
-
-void PrintTree(BinTree P);
-/* I.S  : P terdefinisi, h adalah jarak indentasi	*/
-/* F.S  : semua simpul P sudah ditulis 			*/
+void MakeTree(infotypeTree X, BinTree L, BinTree R, BinTree *P);
+/* Membuat sebuah Expression Tree.								*/
+/* I.S   : P, L, R  dan X terdefinisi.						 	*/
+/* F.S   : Menghasilkan Expression Tree P dengan anak kiri L,
+		   anak kanan R dan infotype X.							*/
 
 void PrintInfoTree(BinTree P);
-/* Menampilkan info-info dari setiap node pada pohon P */
-/* I.S   : Pohon P pasti ada */
-/* F.S   : Info-info dari setiap node pada pohon P ditampilkan */  
+/* Menampilkan semua info dari setiap node pada Expression Tree.	*/
+/* I.S   : Pohon P terdefinisi.										*/
+/* F.S   : Info-info dari setiap node pada pohon P ditampilkan.		*/
 
-int Prior(char x);
-int Priority(char a, char b);
-void Convert(String infix, String postfix);
 int toInt(String X);
-float evaluate(BinTree P);
+/* Melakukan casting terhadap sebuah String menjadi integer,
+   lalu mengembalikannya.										*/
+/* I.S   : X adalah String terdefinisi.							*/
+/* F.S   : Integer hasil casting terhadap X dikirimkan.			*/
+
+boolean isOperator(char c);
+/* Mengembalikan true jika karakter yang diperiksa merupakan operator.	*/
+/* I.S   : Karakter yang diperiksa terdefinisi.							*/
+/* F.S   : Karakter yang diperiksa diketahui operator atau bukan.		*/ 
+
+int Priority(char x);
+/* Mengembalikan nilai prioritas dari sebuah operator, 
+   nilai berbanding lurus dengan prioritas.				*/
+/* I.S   : X terdefinisi.								*/
+/* F.S   : Nilai prioritas X dikirimkan.				*/
+
+boolean isPriority(char a, char b);
+/* Mengembalikan true jika operator1 memiliki prioritas yang
+   lebih tinggi dibanding operator2.								*/
+/* I.S   : a dan b terdeinisi.										*/
+/* F.S   : Diketahui operator mana yang memiliki prioritas tinggi.	*/
+
+void InfixToPostfix(String infix, String postfix);
+/* Mengkonversi ekspresi infix ke postfix.			*/
+/* I.S   : infix terdefinisi.						*/
+/* F.S   : infix berhasil dikonversi ke postfix.	*/
+
+float CalculateTree(BinTree P);
+/* Mengembalikan hasil kalkuasi dari Expression Tree.	*/
+/* I.S   : P terdefinisi.								*/
+/* F.S   : Hasil kalkulasi dari P dikembalikan.			*/
+
 
 #endif

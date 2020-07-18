@@ -1,73 +1,70 @@
 #include "stackChar.h"
 
-boolean isEmptyC(stackChar S){
+boolean isEmptyStackChar(stackChar S) {
+	/* Mengembalikan true jika Stack Char kosong. */
+	/* I.S   : S terdefinisi.					  */
+	/* F.S   : S diketahui kosong atau tidaknya.  */
+	
     return (Top(S)==Nil);
 }
 
-void createStackC(stackChar *S){
+void createStackChar(stackChar *S) {
+	/* Membuat sebuah Stack Char kosong.							 */
+	/* I.S   : S belum terdefinisi.									 */
+	/* F.S   : Menghasilkan Stack Char kosong jika alokasi berhasil. */
+	
     Top(*S)=Nil;
 }
 
-addressC alokasiC(infotypeC X){
-    addressC p;
+addressStackChar alokasiStackChar(infotypeStackChar X) {
+	/* Menghasilkan address hasil alokasi Stack Char.		*/
+	/* I.S   : X belum dialokasi.							*/
+	/* F.S   : Menghasilkan address X yang sudah dialokasi.	*/
+	
+    addressStackChar P;
     
-    p=(addressC)malloc(sizeof(elmStackC));
-    if(p!=Nil){
-        Info(p)=X;
-        Next(p)=Nil;
+    P=(addressStackChar)malloc(sizeof(elmStackChar));
+    if(P!=Nil) {
+        Info(P)=X;
+        Next(P)=Nil;
     }
-    return p;
+    return P;
 }
-void dealokasiC(addressC P){
+
+void dealokasiStackChar(addressStackChar P) {
+	/* Membebaskan address P.			*/
+	/* I.S   : P sudah dialokasi.		*/
+	/* F.S   : P berhasil didealokasi.	*/
+	
     free(P);
 }
 
-boolean findElmAddrsC(stackChar S, addressC P){
-    addressC Q;
-    Q=Top(S);
-    while(Q!=Nil&&Q!=P)
-        Q=Next(Q);
-    return (Q==P);
-}
-
-void pushStackC(stackChar *S, infotypeC X){
-    addressC p;
+void pushStackChar(stackChar *S, infotypeStackChar X) {
+	/* Melakukan push elemen ke bagian Top Stack Char.	*/
+	/* I.S   : S terdefinisi.							*/
+	/* F.S   : Elemen X ditambahkan ke bagian Top S.	*/ 
+	
+    addressStackChar P;
     
-    p=alokasiC(X);
-    Next(p)=Top(*S);
-    Top(*S)=p;
+    P=alokasiStackChar(X);
+    Next(P)=Top(*S);
+    Top(*S)=P;
 }
 
-void popStackC(stackChar *S, infotypeC *X){
-    addressC p;
+void popStackChar(stackChar *S, infotypeStackChar *X) {
+	/* Menghapus elemen dari bagian Top Stack Char.  */
+	/* I.S   : Top S tidak kosong dan X elemen S.	 */
+	/* F.S   : Elemen X dihapuskan dari Top S.		 */ 
+	
+    addressStackChar P;
     
-    if(!isEmptyC(*S)){
-        p=Top(*S);
-        Top(*S)=Next(p);
-        *X=Info(p);
-        dealokasiC(p);
-    }else{
-        printf("kesalahan : stackChar kosong\n");
+    if(!isEmptyStackChar(*S)) {
+        P=Top(*S);
+        Top(*S)=Next(P);
+        *X=Info(P);
+        dealokasiStackChar(P);
     }
-}
-
-void printAllInfoC(stackChar S){
-    addressC p;
-    if(!isEmptyC(S)){
-        p=Top(S);
-        while(p!=Nil){
-            printf("%d ",Info(p));
-            p=Next(p);       
-        }
-        printf("\n");
-    }else{
-        printf("kesalahan : stackChar kosong\n");
-    }
-}
-
-void deleteAllC(stackChar *S){
-    infotypeC x;
-    while(!isEmptyC(*S)){
-        popStackC(S,&x);
+	else {
+        printf("\nStackChar kosong!\n");
     }
 }

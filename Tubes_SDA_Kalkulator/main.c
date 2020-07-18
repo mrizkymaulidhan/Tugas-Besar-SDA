@@ -1,72 +1,68 @@
 #include "Library/Tree/bintree.h"
 #include "Library/Stack/stackTree.h"
 
-BinTree constructTree(infotypeTree postfix) { 
-	stackTree st;
-	BinTree t, t1, t2;
-	infotypeF emptyDel;
+BinTree BuildExpressionTree(infotypeTree postfix) {
+	/* Membuat sebuah Expression Tree dari ekspresi postfix.	*/
+	/* I.S   : postfix terdefinisi.								*/
+	/* F.S   : Expression Tree dikembalikan.					*/
+	
+	int i=0, j, k; 
+	stackTree StackT;
+	BinTree ExpTree, Right, Left;
+	infotypeStackTree emptyDel;
 	infotypeTree tempOpr, tempStr;
-	int i=0, j, k;
  	
- 	createStackF(&st);
+ 	createStackTree(&StackT);
  	
-	while (i<strlen(postfix)) 
-	{ 
-		if (!isOperator(postfix[i]) && postfix[i]!=' ') 
-		{
+	while (i<strlen(postfix)) { 
+		if (!isOperator(postfix[i]) && postfix[i]!=' ') {
 			j=0;
 			tempStr[j]=postfix[i];
-			while(!isOperator(postfix[i+1]) && postfix[i+1]!=' '){
+			while(!isOperator(postfix[i+1]) && postfix[i+1]!=' ') {
 				tempStr[j+1]=postfix[i+1];
 				j++;
 				i++;	
 			}
-			newNode(&t, tempStr);
-			for(k=0; k<strlen(tempStr); k++){
+			newNodeTree(&ExpTree, tempStr);
+			for(k=0; k<strlen(tempStr); k++) {
 				tempStr[k]=' ';
 			}
-			pushStackF(&st, t);
+			pushStackTree(&StackT, ExpTree);
 		} 
-		else if(postfix[i]!=' ')
-		{ 
+		else if(postfix[i]!=' ') { 
 			tempOpr[0]=postfix[i];
-			newNode(&t, tempOpr);
-			
-			t1 = Info(Top(st));
-			popStackF(&st, emptyDel);
+			newNodeTree(&ExpTree, tempOpr);
+		
+			Right = Info(Top(StackT));
+			popStackTree(&StackT, &emptyDel);
 							 
-			t2 = Info(Top(st));
-			popStackF(&st, emptyDel);
+			Left = Info(Top(StackT));
+			popStackTree(&StackT, &emptyDel);
 			
-			MakeTree(tempOpr, t2, t1, &t);
+			MakeTree(tempOpr, Left, Right, &ExpTree);
 			
-			pushStackF(&st, t); 
+			pushStackTree(&StackT, ExpTree); 
 		} 
 		i++;
 	} 
-
-	t = Info(Top(st)); 
-	
-	popStackF(&st, t); 
-
-	return t; 
+	ExpTree = Info(Top(StackT)); 
+	popStackTree(&StackT, &ExpTree); 
+	return ExpTree; 
 }
 
-int main(){
-    String input, tpostfix, temp;
-    float hasil;
-    int i, j=0, num;
+int main() {
+    String input, postfix;
     BinTree ex;
     
+    system("MODE 80,20");
     scanf(" %s",input);
-    Convert(input, tpostfix);
-	printf("%s", tpostfix);
+    InfixToPostfix(input, postfix);
+//	printf("%s", postfix);
 	printf("\n");
 	printf("\n");
-	
-	ex = constructTree(tpostfix);
-	PrintInfoTree(ex);
-	printf("%.2f", evaluate(ex));
+	ex = BuildExpressionTree(postfix);
+//	PrintInfoTree(ex);
+	printf("%.2f", CalculateTree(ex));
 	
 	return 0;
 }
