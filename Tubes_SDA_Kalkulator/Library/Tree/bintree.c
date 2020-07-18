@@ -7,290 +7,160 @@
 
 #include "bintree.h"
 
-/* ****** MANAJEMEN MEMORY ******* */
-addressT Alokasi(infotypeT X)
-{  /* Menghasilkan addressT hasil alokasi sebuah Node */
-   /* Jika alokasi berhasil, maka addressT tidak Nil  */
-   /* Info(P)=X, Left(P)=Nil,Rigr(P)=Nil; Count(P)=0 */	
-   /* Jika alokasi gagal ; mengembalikan  Nil 	     */
-   addressT P;
+addressTree AlokasiTree(infotypeTree X) {
+	/* Menghasilkan address hasil alokasi Expression Tree	*/
+	/* I.S   : X belum dialokasi.							*/
+	/* F.S   : Menghasilkan address X yang sudah dialokasi.	*/
+	
+   	addressTree P;
 
-   P=(addressT)malloc(sizeof(ElmtNode));   
-   if(P!=Nil)
-   {
-	Info(P)=X;
-	Left(P)=Nil;
-	Right(P)=Nil;	 
-	Parent(P)=Nil;
-   }
-   return P;
+   	P=(addressTree)malloc(sizeof(ElmtNode));   
+	if(P!=Nil) {
+		strcpy(Info(P),X);
+		Left(P)=Nil;
+		Right(P)=Nil;	 
+   	}
+   	return P;
 }
 
-boolean IsEmpty(BinTree P)
-{  /*  Mengembalikan true jika pohon kosong  */
+boolean IsEmptyTree(BinTree P) {
+	/* Mengembalikan true jika Expression Tree kosong.	*/
+	/* I.S   : P terdefinisi.					  		*/
+	/* F.S   : P diketahui kosong atau tidaknya.  		*/
+	
 	return (P==Nil);
 }
 
-void CreateEmpty(BinTree *P)
-{	/* I.S	: Pohon tidak ada.  */
-	/* F.S	: Pohon sudah ada, namun masih kosong.  */
-	*P = Nil;
-}
+BinTree GetLeft(BinTree P) { 
+	/* Mengembalikan anak kiri Expression Tree.	*/
+	/* I.S   : P terdefinisi.				  	*/
+	/* F.S   : Anak kiri P dikembalikan.	  	*/
 
-infotypeT GetAkar(BinTree P)
-{ /* Mengirimkan informasi yang tersimpan di Akar pohon biner P */
-  /* tidak kosong */
-   return Info(P);	
-}
-
-BinTree GetParent(BinTree P)
-{ /* Mengirimkan parent dari pohon biner P yang tidak kosong */
-    return Parent(P); 	
-}
-
-BinTree GetLeft(BinTree P)
-{ /* Mengirimkan anak kiri dari pohon biner P yang tidak kosong */
     return Left(P); 	
 }
 
-BinTree GetRight(BinTree P)
-{ /* Mengirimkan anak kanan dari pohon pohon biner P yang tidak kosong */
+BinTree GetRight(BinTree P) {
+	/* Mengembalikan anak kanan Expression Tree.	*/
+	/* I.S   : P terdefinisi.				  		*/
+	/* F.S   : Anak kanan P dikembalikan.	  		*/
+	
     return Right(P);
 }
 
-/* ***************** KONSTRUKTOR ****************  */
-
-void  newNode(BinTree *P, infotype X) 
-{   
-	*P=Alokasi(X);
-	if(*P!=Nil)
-	{   Info(*P)=X;
-	    Left(*P)=Right(*P)=Parent(*P)=Nil;
+void newNodeTree(BinTree *P, infotypeTree X) {  
+	/* Membuat sebuah node Expression Tree baru.	*/
+	/* I.S   : P dan X terdefinisi.					*/
+	/* F.S   : P berhasil dibuat dengan infotype X.	*/
+ 
+	*P=AlokasiTree(X);
+	if(*P!=Nil) {
+		strcpy(Info(*P),X);
+	    Left(*P)=Right(*P)=Nil;
 	} 
 } 
 
-
-BinTree Tree(infotypeT X, BinTree L, BinTree R)
-{ /* Menghasilkan sebuah pohon Biner dari A, L, dan R jika Alokasi berhasil */
-  /* Menghasilkan pohon kosong Nil, jika alokasi gagal 			  */
-    addressT P;
-    
-	P=Alokasi(X);
-	if(P!=Nil)
-	{   Info(P)=X;
-	    Left(P)=L;
-        Right(P)=R;	    
-        Parent(P)=P;
-	}
-	return (P);
-}
-
-void MakeTree(infotypeT X, BinTree L, BinTree R, BinTree *P)
-{  /* I.S   : Sembarang 	*/
-   /* F.S   : Menghasilkan sebuah pohon biner P dari A,L,dan R, jika alokasi */
-   /*         berhasil; Menghasilkan pohon P yang kosong jika alokasi gagal  */
-	*P=Alokasi(X);
-       	if(*P!=Nil)
-		{  	Info(*P)=X;
-	   		Left(*P)=L;
-	   		Right(*P)=R;	
-        	Parent(*P)=*P;
-		}
-}
-
-void BuildTree(BinTree *P)
-{ 	/* Membentuk sebuah pohon biner P dari pita karakter yang dibaca 	*/
-  	/* I.S   : Pita berisi 'kostanta' pohon dalam bentuk prefiks, memory 	*/
-  	/*         pasti cukup, alokasi pasti berhasil 			*/
-  	/* F.S   : P dibentuk dari Ekspresi dalam Pita   			*/
-}
-
-
-/* ************* TRAVERSAL   ************* */
-void Preorder(BinTree P)
-{  /* I.S  : P terdefinisi   					       */
-   /* F.S  : semua simpul P sudah diproses secara Preorder; akar, kiri */
-   /*        kanan (dengan Proses (P)) 				       */
-   /* Basis : pohon kosong  : tidak ada yang diproses		       */
-   /* Rekurens : Prosees Akar(P); Proses secara Preorder(Left(P));     */	
-   /*            Proses secara  Preorder(Right(P)); 		       */ 	
-	if(P !=Nil)
-	{
-		printf("%c ",Info(P));   
-		Preorder(Left(P));
-		Preorder(Right(P));
-    }		   
-}
-
-void Inorder(BinTree P)
-{  /* I.S  : P terdefinisi   					      */
-   /* F.S  : semua simpul P sudah diproses secara Inorder; kiri, akar */
-   /*        kanan (dengan Proses (P)) 				      */
-	if(P!=Nil)
-	{
-	     Inorder(Left(P));	
-	     printf("%c ",Info(P));
-	     Inorder(Right(P));
+void MakeTree(infotypeTree X, BinTree L, BinTree R, BinTree *P) {
+	/* Membuat sebuah Expression Tree.								*/
+	/* I.S   : P, L, R  dan X terdefinisi.						 	*/
+	/* F.S   : Menghasilkan Expression Tree P dengan anak kiri L,
+			   anak kanan R dan infotype X.							*/
+			   
+	*P=AlokasiTree(X);
+	if(*P!=Nil) {
+		strcpy(Info(*P),X);
+	   	Left(*P)=L;
+		Right(*P)=R;	
 	}
 }
 
-void Postorder(BinTree P)
-{  /* I.S  : P terdefinisi   					    */
-   /* F.S  : semua simpul P sudah diproses secara Postorder; kiri,  */    
-   /* 	     kanan, akar (dengan Proses (P)) 			    */
-	if(P!=Nil)
-	{
-	    Postorder(Left(P));	
-	    Postorder(Right(P));
-	    printf("%c ",Info(P));
-	}
-}
-
-void PrintTree(BinTree P)
-{   /* I.S  : P terdefinisi                          	*/
-    /* F.S  : semua simpul P sudah ditulis / preorder	*/
-	if(P!=Nil)
-	{
-	    printf("%c ",Info(P));
-	    PrintTree(Left(P));
-	    PrintTree(Right(P));	
-	}
-}
-
-void PrintNode(BinTree P)
-{	/* Menampilkan info-info dari suatu node pada pohon P */
-	/* I.S   : Pohon P pasti ada */
-  	/* F.S   : Info-info dari suatu node pada pohon P ditampilkan */  
-	BinTree L, R, Px;
-	if(P != Nil){
-		printf("\nInfo Node\t: %c\n",Info(P));
-		if(GetLeft(P)!=Nil){
-			L = GetLeft(P);
-			printf("Left Son\t: %c\n",Info(L));
-		}
-		else{
-			printf("Left Son\t: null\n");
-		}
-		if(GetRight(P)!=Nil){
-			R = GetRight(P);
-			printf("Right Son\t: %c",Info(R));
-		}
-		else{
-			printf("Right Son\t: null");
-		}	
-		printf("\n");  
-	}
-}
-
-void PrintInfo(BinTree P)
-{	/* Menampilkan info-info dari setiap node pada pohon P */
-	/* I.S   : Pohon P pasti ada */
-  	/* F.S   : Info-info dari setiap node pada pohon P ditampilkan */  
+void PrintInfoTree(BinTree P) {
+	/* Menampilkan semua info dari setiap node pada Expression Tree.	*/
+	/* I.S   : Pohon P terdefinisi.										*/
+	/* F.S   : Info-info dari setiap node pada pohon P ditampilkan.		*/
+	
 	BinTree L, R, Px;
 	
-	if(P != Nil){
-		PrintInfo(Left(P)); 
-		printf("Info Node\t: %c\n",Info(P));
-		if(GetLeft(P)!=Nil){
+	if(P != Nil) {
+		PrintInfoTree(Left(P)); 
+		printf("Info Node\t: %s\n",Info(P));
+		if(GetLeft(P)!=Nil) {
 			L = GetLeft(P);
-			printf("Left Son\t: %c\n",Info(L));
+			printf("Left Son\t: %s\n",Info(L));
 		}
-		else{
+		else {
 			printf("Left Son\t: null\n");
 		}
-		if(GetRight(P)!=Nil){
+		if(GetRight(P)!=Nil) {
 			R = GetRight(P);
-			printf("Right Son\t: %c\n",Info(R));
+			printf("Right Son\t: %s\n",Info(R));
 		}
 		else{
 			printf("Right Son\t: null\n");
 		}	
 		printf("\n");  
-		PrintInfo(Right(P));
+		PrintInfoTree(Right(P));
 	}
 }
 
-
-/* ************ SEARCH **************** */
-boolean Search (BinTree P, infotypeT X)
-{	/* Mengirimkan true jika ada node dari P yang bernilai X */
-	/* I.S   : Pohon P pasti ada */
-  	/* F.S   : Node dari P yang bernilai X diketahui keberadaannya. */  
-	if (IsEmpty(P)) {
-		return false;
-	}
-	if (X==Info(P)) {
-		return true;
-	}
-	else {
-		return (Search(Left(P), X) || Search(Right(P), X));
-	}
+int toInt(String X) {
+	/* Melakukan casting terhadap sebuah String menjadi integer,
+	   lalu mengembalikannya.										*/
+	/* I.S   : X adalah String terdefinisi.							*/
+	/* F.S   : Integer hasil casting terhadap X dikirimkan.			*/
+	
+	return atoi(X);
 }
 
-addressT Search2(BinTree T, infotypeT X) 
-{	/* Mengembalikan alamat node dari P yang bernilai X */
-	/* I.S   : Pohon P pasti ada */
-  	/* F.S   : Alamat node dari P yang bernilai X ddikembalikan */ 
-    addressT L,R;	
-    
-    if (T == Nil) {
-       return Nil;	    
-    } else {
-       if (Info(T)!=X) {
-          L = Search2(Left(T),X);
- 	  if (L == Nil) 
-	     return Search2(Right(T),X);
-	  else 
-	     return L;
-       } else {
-	  return T;      
-       }
-    }
-}
+boolean isOperator(char c) { 
+	/* Mengirimkan true jika karakter yang diperiksa merupakan operator.	*/
+	/* I.S   : Karakter yang diperiksa terdefinisi.							*/
+	/* F.S   : Karakter yang diperiksa diketahui operator atau bukan.		*/
+	 
+	return(c=='+' || c=='-' || c=='*' || c=='x' || c=='/' || c ==':' || c =='^');
+} 
 
-/* ************ FUNGSI LAIN **************** */
-void DestroyTree(BinTree *P)
-{   /* Membebaskan memori yang sudah dialokasi oleh P	*/
-	/* I.S  : P terdefinisi                          	*/
-    /* F.S  : semua simpul P sudah ditulis / preorder	*/
-   
-   if(!IsEmpty(*P)) {
-	 DestroyTree(&(Left(*P)));
-	 DestroyTree(&(Right(*P))); 
-   	 free(*P);
-	 *P=Nil;
-   }
-}
-
-int Prior(char x)
-{
-    switch(x)
-    {
+int Priority(char x) {
+	/* Mengembalikan nilai prioritas dari sebuah operator, 
+	   nilai berbanding lurus dengan prioritas.				*/
+	/* I.S   : X terdefinisi.								*/
+	/* F.S   : Nilai prioritas X dikirimkan.				*/
+	
+    switch(x) {
         case ')': return 0;
         case '(': return 0;
         case '+': return 1;
         case '-': return 1;
         case '*': return 2;
+        case 'x': return 2;
         case '/': return 2;
+        case ':': return 2;
 		case '^': return 3;    
     }
 }
 
-int Priority(char a, char b){
-    return (Prior(a)>=Prior(b));
+boolean isPriority(char a, char b) {
+	/* Mengembalikan true jika operator1 memiliki prioritas yang
+	   lebih tinggi dibanding operator2.								*/
+	/* I.S   : a dan b terdeinisi.										*/
+	/* F.S   : Diketahui operator mana yang memiliki prioritas tinggi.	*/
+	
+    return (Priority(a)>=Priority(b));
 }
 
-char *Convert(char *infix){
+void InfixToPostfix(String infix, String postfix) {
+	/* Mengkonversi ekspresi infix ke postfix.			*/
+	/* I.S   : infix terdefinisi.						*/
+	/* F.S   : infix berhasil dikonversi ke postfix.	*/
+	
     int i, index=0, size;
-    char *postfix, tmpchar;
+	char tmpchar;
     stackChar tmp;
     
-    createStackC(&tmp);
-    postfix=(char*)malloc(sizeof(char)*100);
+    createStackChar(&tmp);
     
     size=strlen(infix);
-    for(i=0; i<size; i++){
-        switch(infix[i]){
+    for(i=0; i<size; i++) {
+        switch(infix[i]) {
             case '0':
             case '1':
             case '2':
@@ -307,42 +177,87 @@ char *Convert(char *infix){
             case '+':
             case '-':
             case '*':
+            case 'x':
             case '/':
+            case ':':
             case '^':
                 postfix[index]=' ';
                 index++;            
-                if(isEmptyC(tmp)){
-                    pushStackC(&tmp,infix[i]);
-                }else if(!Priority(Info(Top(tmp)),infix[i])){
-                    pushStackC(&tmp,infix[i]);
-                }else{
-                    while(!isEmptyC(tmp)&&Priority(Info(Top(tmp)),infix[i])){
-                        popStackC(&tmp,&tmpchar);
+                if(isEmptyStackChar(tmp)){
+                    pushStackChar(&tmp,infix[i]);
+                }
+				else if(!isPriority(Info(Top(tmp)),infix[i])){
+                    pushStackChar(&tmp,infix[i]);
+                }
+				else{
+                    while(!isEmptyStackChar(tmp)&&isPriority(Info(Top(tmp)),infix[i])){
+                        popStackChar(&tmp,&tmpchar);
                         postfix[index]=tmpchar;
                         index++;
                     }                
-                    pushStackC(&tmp,infix[i]);
+                    pushStackChar(&tmp,infix[i]);
                 }
                 break;
             case ')':
-                while(!isEmptyC(tmp)&&Info(Top(tmp))!='('){
-                        popStackC(&tmp,&tmpchar);
-                        postfix[index]=tmpchar;
-                        index++;                    
+                while(!isEmptyStackChar(tmp)&&Info(Top(tmp))!='('){
+                    popStackChar(&tmp,&tmpchar);
+                    postfix[index]=tmpchar;
+                    index++;                    
                 }
-                popStackC(&tmp,&tmpchar);
+                popStackChar(&tmp,&tmpchar);
                 break;
             case '(':
-                pushStackC(&tmp,infix[i]);
+                pushStackChar(&tmp,infix[i]);
                 break;
         }
         
     }
-    while(!isEmptyC(tmp)){
-            popStackC(&tmp,&tmpchar);
-            postfix[index]=tmpchar;
-            index++;                  
+    while(!isEmptyStackChar(tmp)) {
+        popStackChar(&tmp,&tmpchar);
+        postfix[index]=tmpchar;
+        index++;                  
     }    
     postfix[index]='\0';
-    return postfix;
+}
+
+float CalculateTree(BinTree P) {
+	/* Mengembalikan hasil kalkuasi dari Expression Tree.	*/
+	/* I.S   : P terdefinisi.								*/
+	/* F.S   : Hasil kalkulasi dari P dikembalikan.			*/
+	
+	int i;
+	float tmp=1.0;
+	  
+    if (IsEmptyTree(P)) {
+        return 0;  
+	}
+    else if (IsEmptyTree(Left(P)) && IsEmptyTree(Right(P))) {
+        return toInt(Info(P));  
+    }
+  
+    float left = CalculateTree(Left(P));  
+    float right = CalculateTree(Right(P));  
+    
+    if(strcmp(Info(P),"+")==0) {
+		return left+right;
+	}
+	else if(strcmp(Info(P),"-")==0) {
+		return left-right;
+	}
+	else if(strcmp(Info(P),"*")==0) {
+		return left*right;
+	}
+	else if(strcmp(Info(P),"x")==0) {
+		return left*right;
+	}
+	else if(strcmp(Info(P),"/")==0) {
+		return left/right;
+	}
+	else if(strcmp(Info(P),":")==0) {
+		return left/right;
+	}
+	for(i=0; i<right; i++) {
+		tmp *= left;
+	}
+	return tmp;
 }

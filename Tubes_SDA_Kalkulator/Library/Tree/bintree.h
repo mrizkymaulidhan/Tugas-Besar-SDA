@@ -11,127 +11,95 @@
 #define Nil NULL
 #define Info(P) (P)->info
 #define Left(P) (P)->left
-#define Parent(P) (P)->parent
 #define Right(P) (P)->right
 #define Next(P) (P)->next
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
 #include "../Stack/stackChar.h"
-#include "boolean.h"
+#include "../Boolean/boolean.h"
 
-typedef char infotypeT;
-typedef struct tElmtNode *addressT;
+typedef char String[50];
+
+typedef char infotypeTree[10];
+typedef struct tElmtNode *addressTree;
 typedef struct tElmtNode {
-			infotypeT info;
-			addressT parent;
-			addressT left;
-			addressT right;
+			infotypeTree info;
+			addressTree left;
+			addressTree right;
 		} ElmtNode;
+typedef addressTree BinTree;
 
-typedef addressT BinTree;
+addressTree AlokasiTree(infotypeTree X);
+/* Menghasilkan address hasil alokasi Expression Tree	*/
+/* I.S   : X belum dialokasi.							*/
+/* F.S   : Menghasilkan address X yang sudah dialokasi.	*/
 
-/* ****** MANAJEMEN MEMORY ******* */
-addressT Alokasi(infotypeT X);
-/* Menghasilkan  addressT hasil alokasi sebuah  Node 	*/
-/* Jika alokasi berhasil, maka  addressT tidak NIl   	*/
-/* Info(P)=X, Left(P)=Nil,Right(P)=Nil, dan Count(P)=0 	*/
-/* Jika alokasi gagal mengembalikan Nil  		*/
-
-boolean IsEmpty(BinTree P);
-/* Mengembalikan true jika pohon kosong */
-
-void CreateEmpty(BinTree *P);
-/* Membuat  Tree   kosong  */
-
-BinTree GetParent(BinTree P);
-/* Mengirimkan parent dari pohon biner P yang tidak kosong */
+boolean IsEmptyTree(BinTree P);
+/* Mengembalikan true jika Expression Tree kosong.	*/
+/* I.S   : P terdefinisi.					  		*/
+/* F.S   : P diketahui kosong atau tidaknya.  		*/
 
 BinTree GetLeft(BinTree P);
-/* Mengirimkan anak kiri pohon biner P  */
+/* Mengembalikan anak kiri Expression Tree.	*/
+/* I.S   : P terdefinisi.				  	*/
+/* F.S   : Anak kiri P dikembalikan.	  	*/
 
 BinTree GetRight(BinTree P);
-/* Mengirimkan anak kanan pohon biner P  */
+/* Mengembalikan anak kanan Expression Tree.	*/
+/* I.S   : P terdefinisi.				  		*/
+/* F.S   : Anak kanan P dikembalikan.	  		*/
 
-/* ******** KONSTRUKTOR ************ */
-BinTree Tree(infotypeT X, BinTree L, BinTree R);
-/* Menghasilkan sebuah pohon Biner dari A, L, dan R jika Alokasi berhasil */
-/* Menghasilkan pohon kosong Nil, jika alokasi gagal 			  */
+void newNode(BinTree *P, infotypeTree X);
+/* Membuat sebuah node Expression Tree baru.	*/
+/* I.S   : P dan X terdefinisi.					*/
+/* F.S   : P berhasil dibuat dengan infotype X.	*/
 
-void MakeTree(infotypeT Y, BinTree L, BinTree R, BinTree *P);
-/* I.S   : Sembarang 	*/
-/* F.S   : Menghasilkan sebuah pohon biner P dari A,L,dan R, jika alokasi */
-/*         berhasil; Menghasilkan pohon P yang kosong jika alokasi gagal  */
+void MakeTree(infotypeTree X, BinTree L, BinTree R, BinTree *P);
+/* Membuat sebuah Expression Tree.								*/
+/* I.S   : P, L, R  dan X terdefinisi.						 	*/
+/* F.S   : Menghasilkan Expression Tree P dengan anak kiri L,
+		   anak kanan R dan infotype X.							*/
 
-void BuildTree(BinTree *P);
-/* Membentuk sebuah pohon biner P dari pita karakter yang dibaca 	*/
-/* I.S   : Pita berisi 'kostanta' pohon dalam bentuk prefiks, memory 	*/
-/*         pasti cukup, alokasi pasti berhasil 			*/
-/* F.S   : P dibentuk dari Ekspresi dalam Pita   			*/
+void PrintInfoTree(BinTree P);
+/* Menampilkan semua info dari setiap node pada Expression Tree.	*/
+/* I.S   : Pohon P terdefinisi.										*/
+/* F.S   : Info-info dari setiap node pada pohon P ditampilkan.		*/
 
-/* ************* TRAVERSAL   ************* */
-void Preorder(BinTree P);
-/* I.S  : P terdefinisi   					    */
-/* F.S  : semua simpul P sudah diproses secara Preorder; akar, kiri */
-/*        kanan (dengan Proses (P)) 				    */
+int toInt(String X);
+/* Melakukan casting terhadap sebuah String menjadi integer,
+   lalu mengembalikannya.										*/
+/* I.S   : X adalah String terdefinisi.							*/
+/* F.S   : Integer hasil casting terhadap X dikirimkan.			*/
 
-void Inorder(BinTree P);
-/* I.S  : P terdefinisi   					    */
-/* F.S  : semua simpul P sudah diproses secara Inorder; kiri, akar  */
-/*        kanan (dengan Proses (P)) 				    */
+boolean isOperator(char c);
+/* Mengembalikan true jika karakter yang diperiksa merupakan operator.	*/
+/* I.S   : Karakter yang diperiksa terdefinisi.							*/
+/* F.S   : Karakter yang diperiksa diketahui operator atau bukan.		*/ 
 
-void Postorder(BinTree P);
-/* I.S  : P terdefinisi   					    */
-/* F.S  : semua simpul P sudah diproses secara Postorder; kiri,     */    
-/* 	  kanan, akar (dengan Proses (P)) 			    */
+int Priority(char x);
+/* Mengembalikan nilai prioritas dari sebuah operator, 
+   nilai berbanding lurus dengan prioritas.				*/
+/* I.S   : X terdefinisi.								*/
+/* F.S   : Nilai prioritas X dikirimkan.				*/
 
-void PrintTree(BinTree P);
-/* I.S  : P terdefinisi, h adalah jarak indentasi	*/
-/* F.S  : semua simpul P sudah ditulis 			*/
+boolean isPriority(char a, char b);
+/* Mengembalikan true jika operator1 memiliki prioritas yang
+   lebih tinggi dibanding operator2.								*/
+/* I.S   : a dan b terdeinisi.										*/
+/* F.S   : Diketahui operator mana yang memiliki prioritas tinggi.	*/
 
-void PrintNode(BinTree P);
-/* Menampilkan info-info dari suatu node pada pohon P */
-/* I.S   : Pohon P pasti ada */
-/* F.S   : Info-info dari suatu node pada pohon P ditampilkan */  
+void InfixToPostfix(String infix, String postfix);
+/* Mengkonversi ekspresi infix ke postfix.			*/
+/* I.S   : infix terdefinisi.						*/
+/* F.S   : infix berhasil dikonversi ke postfix.	*/
 
-void PrintInfo(BinTree P);
-/* Menampilkan info-info dari setiap node pada pohon P */
-/* I.S   : Pohon P pasti ada */
-/* F.S   : Info-info dari setiap node pada pohon P ditampilkan */  
+float CalculateTree(BinTree P);
+/* Mengembalikan hasil kalkuasi dari Expression Tree.	*/
+/* I.S   : P terdefinisi.								*/
+/* F.S   : Hasil kalkulasi dari P dikembalikan.			*/
 
-/* ************ SEARCH **************** */
-boolean Search (BinTree P, infotypeT X);
-/* Mengirimkan true jika ada node dari P yang bernilai X */
-/* I.S   : Pohon P pasti ada */
-/* F.S   : Node dari P yang bernilai X diketahui keberadaannya. */  
-
-addressT Search2(BinTree T, infotypeT X);
-/* Mengembalikan alamat node dari P yang bernilai X */
-/* I.S   : Pohon P pasti ada */
-/* F.S   : Alamat node dari P yang bernilai X ddikembalikan */  
-
-/* ************* FUNGSI LAIN *************** */
-int NbElmt(BinTree P);
-/* Mengirimkan banyaknya elemen (Node) pohon biner P */
-
-int NbDaun(BinTree P);
-/* Mengirimkan banyaknya daun (Node) pohon biner P */
-
-boolean IsSkewLeft (BinTree P);
-/* Mengirimkan true jika P adalah pohon condong kiri */
-
-boolean IsSkewRight(BinTree P);
-/* Mengirimkan true jika P adalah pohon condong kanan */
-
-int Level(BinTree P, infotypeT X);
-/* Mengirinkan level dari Node X yang merupakan salah satu simpul */
-/* dari pohon biner P. Akar(P) level-nya adalah 1. Pohon P  tidak */
-/* kosong 	*/
-
-void DestroyTree(BinTree *P);
-/* Membebaskan memori yang sudah dialokasi oleh P	*/
-/* I.S  : P terdefinisi                          	*/
-/* F.S  : semua simpul P sudah ditulis / preorder	*/
 
 #endif

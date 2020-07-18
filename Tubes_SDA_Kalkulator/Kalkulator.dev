@@ -100,16 +100,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit7]
-FileName=Library\Tree\boolean.h
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit9]
 FileName=Library\Tree\boolean.h
 CompileCpp=0
@@ -121,7 +111,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit8]
-FileName=main.c
+FileName=Library\Boolean\boolean.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -142,6 +132,16 @@ BuildCmd=
 
 [Unit1]
 FileName=Library\Stack\stackChar.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=main.c
 CompileCpp=0
 Folder=
 Compile=1

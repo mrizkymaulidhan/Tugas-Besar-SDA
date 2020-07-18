@@ -1,89 +1,70 @@
 #include "stackTree.h"
 
-int isEmptyF(stackTree S){
-    return (Top(S)==Nil)?1:0;
+boolean isEmptyStackTree(stackTree S) {
+	/* Mengembalikan true jika Stack Tree kosong. */
+	/* I.S   : S terdefinisi.					  */
+	/* F.S   : S diketahui kosong atau tidaknya.  */
+	
+    return (Top(S)==Nil);
 }
 
-void createStackF(stackTree *S){
+void createStackTree(stackTree *S) {
+	/* Membuat sebuah Stack Tree kosong.								*/
+	/* I.S   : S belum terdefinisi.										*/
+	/* F.S   : Menghasilkan Stack Tree kosong jika alokasi berhasil.	*/
+	
     Top(*S)=Nil;
 }
 
-addressF alokasiF(infotypeF X){
-    addressF p;
+addressStackTree alokasiStackTree(infotypeStackTree X) {
+	/* Menghasilkan address hasil alokasi Stack Tree.		*/
+	/* I.S   : X belum dialokasi.							*/
+	/* F.S   : Menghasilkan address X yang sudah dialokasi.	*/
+	
+    addressStackTree P;
     
-    p=(addressF)malloc(sizeof(elmStackF));
-    if(p!=Nil){
-        Info(p)=X;
-        Next(p)=Nil;
+    P=(addressStackTree)malloc(sizeof(elmStackTree));
+    if(P!=Nil) {
+        Info(P)=X;
+        Next(P)=Nil;
     }
-    return p;
+    return P;
 }
 
-void dealokasiF(addressF P){
+void dealokasiStackTree(addressStackTree P) {
+	/* Membebaskan address P.			*/
+	/* I.S   : P sudah dialokasi.		*/
+	/* F.S   : P berhasil didealokasi.	*/
+	
     free(P);
 }
 
-int findElmAddrsF(stackTree S, addressF P){
-    addressF Q;
-    Q=Top(S);
-    while(Q!=Nil&&Q!=P)
-        Q=Next(Q);
-    return (Q==P);
-}
-
-void pushStackF(stackTree *S, infotypeF X){
-    addressF p;
+void pushStackTree(stackTree *S, infotypeStackTree X) {
+	/* Melakukan push elemen ke bagian Top Stack Tree.		*/
+	/* I.S   : S terdefinisi.								*/
+	/* F.S   : Elemen X ditambahkan ke bagian Top S.		*/ 
+	
+    addressStackTree P;
     
-    p=alokasiF(X);
-    Next(p)=Top(*S);
-    Top(*S)=p;
+    P=alokasiStackTree(X);
+    Next(P)=Top(*S);
+    Top(*S)=P;
 }
 
-void popStackF(stackTree *S, infotypeF X){
-    addressF p;
+void popStackTree(stackTree *S, infotypeStackTree *X) {
+	/* Menghapus elemen dari bagian Top Stack Tree.	 */
+	/* I.S   : Top S tidak kosong dan X elemen S.	 */
+	/* F.S   : Elemen X dihapuskan dari Top S.		 */ 
+	
+    addressStackTree P;
     
-    if(!isEmptyF(*S)){
-        p=Top(*S);
-        if(Next(p)!=Nil){
-	        Top(*S)=Next(p);
-		}
-		else{
-			Top(*S)=Nil;
-		}    
-        X=Info(p);
-        dealokasiF(p);
-    }else{
-        printf("kesalahan : stackTree kosong\n");
+    if(!isEmptyStackTree(*S)) {
+        P=Top(*S);
+        Top(*S)=Next(P);
+        *X=Info(P);
+        dealokasiStackTree(P);
+    }
+	else {
+        printf("\nStackChar kosong!\n");
     }
 }
-
-void printAllInfoF(stackTree S){
-    addressF p;
-    if(!isEmptyF(S)){
-        p=Top(S);
-        while(p!=Nil){
-            printf("%.2f ",Info(p));
-            p=Next(p);       
-        }
-        printf("\n");
-    }else{
-        printf("stackTree kosong\n");
-    }
-}
-
-void deleteAllF(stackTree *S){
-    infotypeF x;
-    while(!isEmptyF(*S)){
-        popStackF(S,x);
-    }
-}
-
-boolean isOperator(char c) 
-{ 
-	if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^'){
-		return true; 
-	}
-	return false; 
-} 
-
-
