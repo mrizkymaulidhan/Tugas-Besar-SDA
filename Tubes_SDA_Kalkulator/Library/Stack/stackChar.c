@@ -1,7 +1,7 @@
 #include "stackChar.h"
 
-int isEmptyC(stackChar S){
-    return (Top(S)==Nil)?1:0;
+boolean isEmptyC(stackChar S){
+    return (Top(S)==Nil);
 }
 
 void createStackC(stackChar *S){
@@ -22,12 +22,12 @@ void dealokasiC(addressC P){
     free(P);
 }
 
-int findElmAddrsC(stackChar S, addressC P){
+boolean findElmAddrsC(stackChar S, addressC P){
     addressC Q;
     Q=Top(S);
     while(Q!=Nil&&Q!=P)
         Q=Next(Q);
-    return (Q==P)?1:0;
+    return (Q==P);
 }
 
 void pushStackC(stackChar *S, infotypeC X){

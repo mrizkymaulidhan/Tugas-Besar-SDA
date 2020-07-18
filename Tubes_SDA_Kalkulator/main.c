@@ -1,36 +1,48 @@
 #include "Library/Tree/bintree.h"
 #include "Library/Stack/stackTree.h"
 
-BinTree constructTree(char *postfix) { 
+BinTree constructTree(infotypeTree postfix) { 
 	stackTree st;
 	BinTree t, t1, t2;
-	infotypeF temp;
-	int i;
+	infotypeF emptyDel;
+	infotypeTree tempOpr, tempStr;
+	int i=0, j, k;
  	
  	createStackF(&st);
  	
-	for (i=0; i<strlen(postfix); i++) 
+	while (i<strlen(postfix)) 
 	{ 
 		if (!isOperator(postfix[i]) && postfix[i]!=' ') 
 		{
-			newNode(&t, postfix[i]);  
+			j=0;
+			tempStr[j]=postfix[i];
+			while(!isOperator(postfix[i+1]) && postfix[i+1]!=' '){
+				tempStr[j+1]=postfix[i+1];
+				j++;
+				i++;	
+			}
+			newNode(&t, tempStr);
+			for(k=0; k<strlen(tempStr); k++){
+				tempStr[k]=' ';
+			}
 			pushStackF(&st, t);
-
 		} 
 		else if(postfix[i]!=' ')
 		{ 
-			newNode(&t, postfix[i]);
+			tempOpr[0]=postfix[i];
+			newNode(&t, tempOpr);
 			
 			t1 = Info(Top(st));
-			popStackF(&st, temp);
+			popStackF(&st, emptyDel);
 							 
 			t2 = Info(Top(st));
-			popStackF(&st, temp);
+			popStackF(&st, emptyDel);
 			
-			MakeTree(postfix[i], t2, t1, &t);
+			MakeTree(tempOpr, t2, t1, &t);
 			
 			pushStackF(&st, t); 
 		} 
+		i++;
 	} 
 
 	t = Info(Top(st)); 
@@ -38,61 +50,23 @@ BinTree constructTree(char *postfix) {
 	popStackF(&st, t); 
 
 	return t; 
-} 
-
-int toInt(char X){
-	return ((int)X-48);
 }
 
-float eval(BinTree P)  {
-	int i;
-	float tmp=1.0;
-	  
-    if (P==Nil)  
-        return 0;  
-   
-    if (Left(P)==Nil && Right(P)==Nil)  
-        return toInt(Info(P));  
-  
-    float left = eval(Left(P));  
-    float right = eval(Right(P));  
-    
-    if (Info(P)=='+')  
-        return left+right;  
-  
-    if (Info(P)=='-')  
-        return left-right;  
-  
-    if (Info(P)=='*')  
-        return left*right;  
-        
-  	if (Info(P)=='/')
-  		return left/right;
-  	
-  	for(i=0; i<right; i++){
-  		tmp *= left;
-	}
-	return tmp;
-}  
-  
-
 int main(){
-	char input[50];
-    char *tpostfix, temp[20];
+    String input, tpostfix, temp;
     float hasil;
     int i, j=0, num;
     BinTree ex;
     
     scanf(" %s",input);
-    tpostfix=Convert(&input);
+    Convert(input, tpostfix);
 	printf("%s", tpostfix);
 	printf("\n");
 	printf("\n");
 	
 	ex = constructTree(tpostfix);
-	PrintInfo(ex);
-	hasil = eval(ex);
-	printf("%.2f", hasil);
+	PrintInfoTree(ex);
+	printf("%.2f", evaluate(ex));
 	
 	return 0;
 }

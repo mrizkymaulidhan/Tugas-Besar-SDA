@@ -1,7 +1,7 @@
 #include "stackTree.h"
 
-int isEmptyF(stackTree S){
-    return (Top(S)==Nil)?1:0;
+boolean isEmptyF(stackTree S){
+    return (Top(S)==Nil);
 }
 
 void createStackF(stackTree *S){
@@ -23,7 +23,7 @@ void dealokasiF(addressF P){
     free(P);
 }
 
-int findElmAddrsF(stackTree S, addressF P){
+boolean findElmAddrsF(stackTree S, addressF P){
     addressF Q;
     Q=Top(S);
     while(Q!=Nil&&Q!=P)
@@ -53,7 +53,7 @@ void popStackF(stackTree *S, infotypeF X){
         X=Info(p);
         dealokasiF(p);
     }else{
-        printf("kesalahan : stackTree kosong\n");
+        printf("stackTree kosong\n");
     }
 }
 
@@ -80,10 +80,5 @@ void deleteAllF(stackTree *S){
 
 boolean isOperator(char c) 
 { 
-	if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^'){
-		return true; 
-	}
-	return false; 
+	return(c == '+'|| c == '-' || c == '*' || c == '/' || c == '^');
 } 
-
-

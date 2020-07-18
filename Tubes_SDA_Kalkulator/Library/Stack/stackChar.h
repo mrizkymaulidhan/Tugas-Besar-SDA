@@ -1,11 +1,14 @@
 #ifndef STACK_CHAR_H
 #define STACK_CHAR_H
+
 #define Nil NULL
 #define Info(P) (P)->info
 #define Next(P) (P)->next
 #define Top(S)  ((S).top)
+
 #include<stdio.h>
 #include<stdlib.h>
+#include "../Boolean/boolean.h"
 
 typedef char infotypeC;
 typedef struct tElmC *addressC;
@@ -17,7 +20,7 @@ typedef struct{
     addressC top;
 }stackChar;
 
-int isEmptyC(stackChar S);
+boolean isEmptyC(stackChar S);
 /* Mengembalikan nilai boolean true jika stack kosong */
 /* I.S   : S terdefinisi */
 /* F.S   : S diketahui kosong atau tidaknya */
@@ -37,7 +40,7 @@ void dealokasiC(addressC P);
 /* I.S   : P pasti ada */
 /* F.S   : P berhasil didealokasi */
 
-int findElmAddrsC(stackChar S, addressC P);
+boolean findElmAddrsC(stackChar S, addressC P);
 /* Mengembalikan address dari elemen yang dicari */
 /* I.S   : S pasti ada */
 /* F.S   : Menghasilkan address P */

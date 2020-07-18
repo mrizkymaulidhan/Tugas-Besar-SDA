@@ -16,12 +16,12 @@ typedef struct tElmF{
     infotypeF info;
     addressF next;
 }elmStackF;
+
 typedef struct{
     addressF top;
 }stackTree;
 
-
-int isEmptyF(stackTree S);
+boolean isEmptyF(stackTree S);
 /* Mengembalikan nilai boolean true jika stack kosong */
 /* I.S   : S terdefinisi */
 /* F.S   : S diketahui kosong atau tidaknya */
@@ -41,7 +41,7 @@ void dealokasiF(addressF P);
 /* I.S   : P pasti ada */
 /* F.S   : P berhasil didealokasi */
 
-int findElmAddrsF(stackTree S, addressF P);
+boolean findElmAddrsF(stackTree S, addressF P);
 /* Mengembalikan address dari elemen yang dicari */
 /* I.S   : S pasti ada */
 /* F.S   : Menghasilkan address P */
