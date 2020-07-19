@@ -1,6 +1,10 @@
 #include "About.h"
 
 void Rizky(){
+	/* Menampilkan informasi mengenai developer.			*/
+	/* I.S   : Sembarang.									*/
+	/* F.S   : Informasi mengenai developer ditampilkan.	*/
+	
 	printf("\nNama Lengkap\t: Mohammad Rizky Maulidhan");
 	printf("\nNama Panggilan\t: Rizky");
 	printf("\nNIM\t\t: 191524049");
@@ -11,6 +15,10 @@ void Rizky(){
 }
 
 void Shinta(){
+	/* Menampilkan informasi mengenai developer.			*/
+	/* I.S   : Sembarang.									*/
+	/* F.S   : Informasi mengenai developer ditampilkan.	*/
+	
 	printf("\nNama Lengkap\t: Shinta Nurkaafi");
 	printf("\nNama Panggilan\t: Shinta");
 	printf("\nNIM\t\t: 191524061");
@@ -21,10 +29,14 @@ void Shinta(){
 }
 
 void AplKalkulator(){
+	/* Menampilkan informasi mengenai aplikasi.			*/
+	/* I.S   : Sembarang.								*/
+	/* F.S   : Informasi mengenai aplikasi ditampilkan.	*/
+	
 	printf("\n\n");
 	system("cls");
 	
-	printf("\n\t\t# APLIKASI KALKULATOR #\n");
+	printf("\n\t\t\t# APLIKASI KALKULATOR #\n");
 	printf("\n     Aplikasi yang akan kami buat adalah aplikasi kalkulator yang menggunakan");
 	printf("\nkonsep binary tree dalam melakukan proses perhitungannya. Dalam proses");
 	printf("\nperhitungannya dibutuhkan inputan berupa string yaitu sebuah ekspresi");
@@ -47,22 +59,25 @@ void AplKalkulator(){
 	}
 
 void Identitas(){
+	/* Menampilkan menu identitas.				*/
+	/* I.S   : Sembarang.						*/
+	/* F.S   : Menu identitas ditampilkan.		*/
+	
 	printf("\n\n");
 	system("cls");
 	
 	printf("\n\t\t# IDENTITAS DEVELOPER #\n");
-		puts("\n1. MOHAMMAD RIZKY MAULIDHAN - 191524049");
-		puts("2. SHINTA NURKAAFI - 191524061\n");
-		puts("Masukkan pilihan sesuai nomor : ");
-		switch(getch()) {	
-		    case '1' :
-		    	Rizky();
-				break;
-			case '2' : 
-				Shinta();
-				break;
-			default :
-				puts("\nNomor yang Anda masukkan tidak valid!");
-		}
-	
+	puts("\n1. MOHAMMAD RIZKY MAULIDHAN - 191524049");
+	puts("2. SHINTA NURKAAFI - 191524061\n");
+	puts("Masukkan pilihan sesuai nomor : ");
+	switch(getch()) {	
+	    case '1' :
+	    	Rizky();
+			break;
+		case '2' : 
+			Shinta();
+			break;
+		default :
+			puts("\nNomor yang Anda masukkan tidak valid!");
+	}
 }

@@ -1,12 +1,12 @@
 #ifndef BANGUNRUANG_H
 #define BANGUNRUANG_H
 
-#define Panjang(P) P.panjang //balok
-#define Lebar(P) P.lebar //balok
-#define Tinggi(P) P.tinggi //balok, kerucut, tabung, limas, prisma
-#define Sisi(P) P.sisi //kubus, limas, prisma
-#define Radius(P) P.radius //bola, kerucut, tabung
-#define Tinggi1(P) P.tinggi1 //limas, prisma
+#define Panjang(P) P.panjang 
+#define Lebar(P) P.lebar
+#define Tinggi(P) P.tinggi
+#define Sisi(P) P.sisi 
+#define Radius(P) P.radius 
+#define Tinggi1(P) P.tinggi1
 
 #include<stdio.h>
 #include<math.h>
@@ -47,8 +47,6 @@ typedef struct {
 	int tinggi1;
 }Prisma;
 
-
-//BALOK
 float LuasBalok(Balok P);
 /* Mengembalikan hasil perhitungan luas permukaan balok.	*/
 /* I.S   : P terdefinisi.									*/

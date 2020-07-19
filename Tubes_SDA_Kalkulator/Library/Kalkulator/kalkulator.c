@@ -31,7 +31,10 @@ BinTree BuildExpressionTree(infotypeTree postfix) {
 		else if((postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]!=' ' && postfix[i+2]!=' ' && !isOperator(postfix[i+2])) || 
 				(postfix[i]=='-' && postfix[i-1]!=' ' && postfix[i+1]==' ') || 
 				(postfix[i]=='-' && postfix[i-1]!=' ' && isOperator(postfix[i+1])) ||
-				(postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]==' ')) { 
+				(postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]==' ') ||
+				 postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]!=' ' && isOperator(postfix[i+2]) ||
+				 postfix[i]=='-' && postfix[i-1]!=' ' && isOperator(postfix[i+1]) && isOperator(postfix[i+2]) ||
+				 postfix[i]=='-' && isOperator(postfix[i-1]) && postfix[i-2]!=' ') { 
 			tempOpr[0]=postfix[i];
 			newNodeTree(&ExpTree, tempOpr);
 		
@@ -69,11 +72,13 @@ void kalkulatorMenu() {
 	/* Menampilkan menu untuk kalkulator.			*/
 	/* I.S   : Sembarang.							*/
 	/* F.S   : Menu untuk kalkulator ditampilkan.	*/
+	
 	String input, postfix;
 	BinTree ex;
 	
 	system("cls");
-	puts("\n\t\t# KALKULATOR #\n");
+	system("MODE 69,20");
+	puts("\n\t\t\t# KALKULATOR #\n");
 	printf("PETUNJUK : ");
 	printf("\n1. Gunakan '^' untuk melakukan operasi perpangkatan.");
 	printf("\n2. Gunakan '*' atau 'x' untuk melakukan operasi perkalian.");
@@ -81,11 +86,11 @@ void kalkulatorMenu() {
 	printf("\n4. Gunakan '+' untuk melakukan operasi penjumlahan.");
 	printf("\n5. Gunakan '-' untuk melakukan operasi pengurangan.");
 	printf("\n6. Bisa menambahkan '( dan )' ke dalam operasi perhitungan.");
-	printf("\n7. Bilangan yang berlaku adalah bilangan bulat (bilangan negatif, nol, dan bilangan positif) dan bilngan desimal.");
+	printf("\n7. Bilangan yang berlaku adalah bilangan bulat \n   (bilangan negatif, nol, dan bilangan positif) dan bilngan desimal.");
 	printf("\n\n");
 	system("PAUSE");
 	system("cls");
-	puts("\n\t\t# KALKULATOR #\n");
+	puts("\n\t\t\t# KALKULATOR #\n");
 	printf("Lakukan perhitungan :\n\n"); scanf(" %s",input);
 	InfixToPostfix(input, postfix);
 	printf("\n");
@@ -93,10 +98,11 @@ void kalkulatorMenu() {
 	printf("= %.2f\n", CalculateTree(ex)); 
 }
 
-void fiturDatarMenu(){	
+void fiturDatarMenu() {	
 	/* Menampilkan menu untuk bangun datar.			*/
 	/* I.S   : Sembarang.							*/
 	/* F.S   : Menu untuk bangun datar ditampilkan.	*/
+	
 	system("cls");
 	puts("\n\t\t# BANGUN DATAR #");
 	printf("\nBangun datar yang tersedia :\n");
@@ -149,10 +155,11 @@ void fiturDatarMenu(){
 	}
 }
 
-void fiturRuangMenu(){	
+void fiturRuangMenu() {	
 	/* Menampilkan menu untuk bangun ruang.			*/
 	/* I.S   : Sembarang.							*/
 	/* F.S   : Menu untuk bangun ruang ditampilkan.	*/
+	
 	system("cls");
 	puts("\n\t\t# BANGUN RUANG #\n");
 	printf("Bangun ruang yang tersedia :\n");
@@ -199,7 +206,11 @@ void fiturRuangMenu(){
 	}
 }
 
-void About(){	
+void About() {	
+	/* Menampilkan informasi mengenai aplikasi dan developer.			*/
+	/* I.S   : Sembarang.												*/
+	/* F.S   : Informasi mengenai aplikasi dan developer ditampilkan.	*/
+
 	system("cls");
 	puts("\n\t\t# ABOUT #\n");
 	puts("1. Aplikasi Kalkulator");
@@ -222,12 +233,13 @@ int mainMenu() {
 	/* Menampilkan menu utama aplikasi ini.			*/
 	/* I.S   : Sembarang.							*/
 	/* F.S   : Menu utama aplikasi ditampilkan.		*/
+	
 	int i;
 	
 	while(i<=100) {
-		//system("MODE 34,19");
-		puts("\n=`=`=`=`=`=`=`=`=`=APLIKASI KALULATOR=`=`=`=`=`=`=`=`=`=");
-		puts("\n*** MAIN MENU ***");
+		system("MODE 57,20");
+		puts("\n=`=`=`=`=`=`=`=`=` APLIKASI KALULATOR `=`=`=`=`=`=`=`=`=");
+		puts("\n*** MAIN MENU ***\n");
 		puts("1. Kalkulator");
 		puts("2. Bangun Datar");
 		puts("3. Bangun Ruang");

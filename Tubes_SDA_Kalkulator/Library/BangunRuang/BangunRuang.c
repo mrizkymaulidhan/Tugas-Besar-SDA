@@ -1,22 +1,22 @@
 #include "BangunRuang.h"
 
-
-//BALOK
-float LuasBalok(Balok P){
+float LuasBalok(Balok P) {
 	/* Mengembalikan hasil perhitungan luas permukaan balok.	*/
 	/* I.S   : P terdefinisi.									*/
 	/* F.S   : Hasil perhitungan luas permukaan P dikembalikan.	*/
+	
 	return 2*((Panjang(P)*Lebar(P))+(Lebar(P)*Tinggi(P))+(Panjang(P)*Tinggi(P))); //2(pl+lt+pt)
 }
 
-float VolumeBalok(Balok P){
+float VolumeBalok(Balok P) {
 	/* Mengembalikan hasil perhitungan volume balok.	*/
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
-	return Panjang(P)*Lebar(P)*Tinggi(P); //pxlxt
+	
+	return Panjang(P)*Lebar(P)*Tinggi(P);
 }
 
-void HitungBalok(){
+void HitungBalok() {
 	/* Prosedur untuk menginput, dan menghitung luas permukaan dan volume balok.		*/
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume balok ditampilkan ke layar.	*/
@@ -30,26 +30,27 @@ void HitungBalok(){
 	printf("\nVolume Balok\t\t= %.2f\n", VolumeBalok(P));
 }
 
-
-//KUBUS
-float LuasKubus(Kubus P){
+float LuasKubus(Kubus P) {
 	/* Mengembalikan hasil perhitungan luas permukaan kubus.	*/
 	/* I.S   : P terdefinisi.						  			*/
 	/* F.S   : Hasil perhitungan luas permukaan P dikembalikan.	*/
-	return 6*(Sisi(P)*Sisi(P)); //6(sxs)
+	
+	return 6*(Sisi(P)*Sisi(P));
 }
 
-float VolumeKubus(Kubus P){
+float VolumeKubus(Kubus P) {
 	/* Mengembalikan hasil perhitungan volume kubus.	*/
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
-	return Sisi(P)*Sisi(P)*Sisi(P); //sxsxs
+	
+	return Sisi(P)*Sisi(P)*Sisi(P); 
 }
 
-void HitungKubus(){
+void HitungKubus() {
 	/* Prosedur untuk menginput, dan menghitung luas permukaan dan volume kubus.		*/
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume kubus ditampilkan ke layar.	*/
+	
 	Kubus P;
 	printf("\n\t\t# BANGUN RUANG KUBUS #\n");
 	printf("\nSisi Kubus\t\t: "); scanf("%d", &Sisi(P));
@@ -58,25 +59,27 @@ void HitungKubus(){
 }
 
 
-//BOLA
-float LuasBola(Bola P){
+float LuasBola(Bola P) {
 	/* Mengembalikan hasil perhitungan luas permukaan bola.		*/
 	/* I.S   : P terdefinisi.									*/
 	/* F.S   : Hasil perhitungan luas permukaan P dikembalikan.	*/
-	return 4*3.14*Radius(P)*Radius(P); //4xphixrxr
+	
+	return 4*3.14*Radius(P)*Radius(P);
 }
 
-float VolumeBola(Bola P){
+float VolumeBola(Bola P) {
 	/* Mengembalikan hasil perhitungan volume bola.		*/
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
-	return 4/3*3.14*Radius(P)*Radius(P)*Radius(P); //4/3xphixrxrxr
+	
+	return 4/3*3.14*Radius(P)*Radius(P)*Radius(P);
 }
 
-void HitungBola(){
+void HitungBola() {
 	/* Prosedur untuk menginput, dan menghitung luas permukaan dan volume bola.			*/
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume bola ditampilkan ke layar.	*/
+	
 	Bola P;
 	printf("\n\t\t# BANGUN RUANG BOLA #\n");
 	printf("\nRadius Bola\t\t: "); scanf("%d", &Radius(P));
@@ -84,26 +87,27 @@ void HitungBola(){
 	printf("\nVolume Bola\t\t= %.2f\n", VolumeBola(P));
 }
 
-
-//KERUCUT
-float LuasKerucut(Kerucut P){
+float LuasKerucut(Kerucut P) {
 	/* Mengembalikan hasil perhitungan luas permukaan kerucut.	*/
 	/* I.S   : P terdefinisi.									*/
 	/* F.S   : Hasil perhitungan luas permukaan P dikembalikan.	*/
-	return ((3.14*Radius(P))*(Radius(P)+sqrt((Radius(P)*Radius(P))+(Tinggi(P)*Tinggi(P))))); //phixr(r+s)
+	
+	return ((3.14*Radius(P))*(Radius(P)+sqrt((Radius(P)*Radius(P))+(Tinggi(P)*Tinggi(P)))));
 }
 
-float VolumeKerucut(Kerucut P){
+float VolumeKerucut(Kerucut P) {
 	/* Mengembalikan hasil perhitungan volume kerucut.	*/
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
-	return 1/3*3.14*Radius(P)*Radius(P)*Tinggi(P); //1/3xphixrxrxt
+	
+	return 1/3*3.14*Radius(P)*Radius(P)*Tinggi(P);
 }
 
-void HitungKerucut(){
+void HitungKerucut() {
 	/* Prosedur untuk menginput, dan menghitung luas permukaan dan volume kerucut.		*/
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume kerucut ditampilkan ke layar.*/
+	
 	Kerucut P;
 	printf("\n\t\t# BANGUN RUANG KERUCUT #\n");
 	printf("\nRadius Kerucut\t\t: "); scanf("%d", &Radius(P));
@@ -112,26 +116,27 @@ void HitungKerucut(){
 	printf("\nVolume Kerucut\t\t= %.2f\n", VolumeKerucut(P));
 }
 
-
-//TABUNG
-float LuasTabung(Tabung P){
+float LuasTabung(Tabung P) {
 	/* Mengembalikan hasil perhitungan luas permukaan tabung.	*/
 	/* I.S   : P terdefinisi.									*/
 	/* F.S   : Hasil perhitungan luas permukaan P dikembalikan.	*/
-	return ((2*3.14*Radius(P))*(Radius(P)+Tinggi(P))); //2xphixr(r+t)
+	
+	return ((2*3.14*Radius(P))*(Radius(P)+Tinggi(P)));
 }
 
-float VolumeTabung(Tabung P){
+float VolumeTabung(Tabung P) {
 	/* Mengembalikan hasil perhitungan volume tabung.	*/
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
-	return 3.14*Radius(P)*Radius(P)*Tinggi(P); //phixrxrxt
+	
+	return 3.14*Radius(P)*Radius(P)*Tinggi(P);
 }
 
-void HitungTabung(){
+void HitungTabung() {
 	/* Prosedur untuk menginput, dan menghitung luas dan keliling jajar genjang.		*/
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas dan keliling jajar genjang ditampilkan ke layar.	*/
+	
 	Tabung P;
 	printf("\n\t\t# BANGUN RUANG TABUNG #\n");
 	printf("\nRadius Tabung\t\t: "); scanf("%d", &Radius(P));
@@ -141,25 +146,27 @@ void HitungTabung(){
 }
 
 
-//LIMAS
-float LuasLimas(Limas P){
+float LuasLimas(Limas P) {
 	/* Mengembalikan hasil perhitungan luas permukaan limas.	*/
 	/* I.S   : P terdefinisi.									*/
 	/* F.S   : Hasil perhitungan luas permukaan P dikembalikan.	*/
-	return (Sisi(P)*Sisi(P)+4*0.5*(Sisi(P)*Tinggi1(P))); //sxs + 4x0.5xaxt
+	
+	return (Sisi(P)*Sisi(P)+4*0.5*(Sisi(P)*Tinggi1(P)));
 }
 
-float VolumeLimas(Limas P){
+float VolumeLimas(Limas P) {
 	/* Mengembalikan hasil perhitungan volume limas.	*/
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
-	return 1/3*Sisi(P)*Sisi(P)*Tinggi(P); //1/3xsxsxt
+	
+	return 1/3*Sisi(P)*Sisi(P)*Tinggi(P);
 }
 
-void HitungLimas(){
+void HitungLimas() {
 	/* Prosedur untuk menginput, dan menghitung luas permukaan dan volume limas.	*/
 	/* I.S   : Sembarang.															*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume ditampilkan ke layar.	*/
+	
 	Limas P;
 	printf("\n\t\t# BANGUN RUANG LIMAS #\n");
 	printf("\nSisi Alas Limas\t\t: "); scanf("%d", &Sisi(P));
@@ -169,26 +176,27 @@ void HitungLimas(){
 	printf("\nVolume Limas\t\t= %.2f\n", VolumeLimas(P));
 }
 
-
-//PRISMA
-float LuasPrisma(Prisma P){
+float LuasPrisma(Prisma P) {
 	/* Mengembalikan hasil perhitungan luas permukaan prisma.	*/
 	/* I.S   : P terdefinisi.									*/
 	/* F.S   : Hasil perhitungan luas permukaan P dikembalikan.	*/
-	return (Sisi(P)*Tinggi1(P)+3*Sisi(P)*Tinggi(P)); //sxt1 + 3(sxt)
+	
+	return (Sisi(P)*Tinggi1(P)+3*Sisi(P)*Tinggi(P));
 }
 
-float VolumePrisma(Prisma P){
+float VolumePrisma(Prisma P ){
 	/* Mengembalikan hasil perhitungan volume prisma.	*/
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
-	return (0.5*Sisi(P)*Tinggi1(P))*Tinggi(P); //0.5xaxt1xt
+	
+	return (0.5*Sisi(P)*Tinggi1(P))*Tinggi(P); 
 }
 
-void HitungPrisma(){
+void HitungPrisma() {
 	/* Prosedur untuk menginput, dan menghitung luas permukaan dan volume prisma.		*/
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume prisma ditampilkan ke layar.	*/
+	
 	Prisma P;
 	printf("\n\t\t# BANGUN RUANG LIMAS #\n");
 	printf("\nSisi Alas Prisma\t: "); scanf("%d", &Sisi(P));

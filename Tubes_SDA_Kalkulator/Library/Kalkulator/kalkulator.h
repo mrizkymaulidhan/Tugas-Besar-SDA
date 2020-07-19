@@ -28,6 +28,9 @@ void fiturRuangMenu();
 /* F.S   : Menu untuk bangun ruang ditampilkan.	*/
 
 void About();
+/* Menampilkan informasi mengenai aplikasi dan developer.			*/
+/* I.S   : Sembarang.												*/
+/* F.S   : Informasi mengenai aplikasi dan developer ditampilkan.	*/
 
 int mainMenu();
 /* Menampilkan menu utama aplikasi ini.			*/

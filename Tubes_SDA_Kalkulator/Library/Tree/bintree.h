@@ -3,7 +3,7 @@
 /* Oleh    : ANI RAHMANI / 23501007  			*/
 /* Tgl	   : 21 / 11 / 2001	     			*/
 /* Mod     : Mohammad Rizky Maulidhan */
-/* Tgl Mod : 23 /06 / 2020 */
+/* Tgl Mod : 12 /07 / 2020 */
 
 #ifndef BINTREE_H
 #define BINTREE_H
