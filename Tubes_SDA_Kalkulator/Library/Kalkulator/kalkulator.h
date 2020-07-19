@@ -16,6 +16,8 @@ void fiturMenu();
 
 void fiturRuangMenu();
 
+void About();
+
 int mainMenu();
 
 #endif

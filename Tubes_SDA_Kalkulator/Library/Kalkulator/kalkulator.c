@@ -170,7 +170,29 @@ void fiturRuangMenu(){
 		default :
 			puts("\nNomor yang Anda masukkan tidak valid!");
 			puts("\nSilakan coba kembali :)");
-			puts("\nBYE-BYE! See You Later..");
+			puts("BYE-BYE! See You Later..");
+	}
+}
+
+void About(){	
+	system("cls");
+	puts("\n\t\t# About #\n");
+	puts("1. Aplikasi Kalkulator");
+	puts("2. Tentang Kita");
+	puts("\nMasukkan pilihan sesuai nomor : ");
+	switch(getch()) {	
+	    case '1' :
+	    	system("cls");
+	    	AboutKalkulator();
+			break;
+		case '2' :
+			system("cls");
+			AboutUs();
+			break;
+		default :
+			puts("\nNomor yang Anda masukkan tidak valid!");
+			puts("\nSilakan coba kembali :)");
+			puts("BYE-BYE! See You Later..");
 	}
 }
 
@@ -199,7 +221,7 @@ int mainMenu() {
 				fiturRuangMenu();
 				break;
 			case '4' :
-				
+				About();
 				break;
 			case '5' :
 				return 0;
