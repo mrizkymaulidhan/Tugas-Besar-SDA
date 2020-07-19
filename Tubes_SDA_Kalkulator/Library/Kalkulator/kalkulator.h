@@ -5,6 +5,7 @@
 #include "../Stack/stackTree.h"
 #include "../BangunDatar/BangunDatar.h"
 #include "../BangunRuang/BangunRuang.h"
+#include "../About/About.h"
 
 BinTree BuildExpressionTree(infotypeTree postfix);
 /* Membuat sebuah Expression Tree dari ekspresi postfix.	*/

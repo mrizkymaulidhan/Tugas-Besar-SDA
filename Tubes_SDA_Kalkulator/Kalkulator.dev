@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=14
+UnitCount=16
 
 [VersionInfo]
 Major=1
@@ -171,7 +171,11 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
+<<<<<<< HEAD
 FileName=Library\BangunRuang\BangunRuang.c
+=======
+FileName=Library\BangunRuang\BangunRuang.h
+>>>>>>> eaef58d7b4a3c3865beb4cd007cdcc33dafc1efb
 CompileCpp=0
 Folder=
 Compile=1
@@ -181,7 +185,31 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
+<<<<<<< HEAD
 FileName=Library\BangunRuang\BangunRuang.h
+=======
+FileName=Library\BangunRuang\BangunRuang.c
+>>>>>>> eaef58d7b4a3c3865beb4cd007cdcc33dafc1efb
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit15]
+FileName=Library\About\About.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit16]
+FileName=Library\About\About.h
 CompileCpp=0
 Folder=
 Compile=1

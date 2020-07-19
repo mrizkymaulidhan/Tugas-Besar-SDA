@@ -103,8 +103,8 @@ void fiturDatarMenu(){
 	puts("2. Persegi");
 	puts("3. Lingkaran");
 	puts("4. Segitiga");
-	puts("5. Trapesium");
-	puts("6. JajarGenjang");
+	puts("5. Jajar Genjang");
+	puts("6. Trapesium");
 	puts("7. Layang-Layang");
 	puts("8. Belah Ketupat");
 	
@@ -126,13 +126,13 @@ void fiturDatarMenu(){
 			system("cls");
 			HitungSegitiga();
 			break;
-		case '5' : 
-			system("cls");
-			HitungTrapesium();
-			break;
-		case '6' :
+		case '5' :
 			system("cls");
 			HitungJajarGenjang(); 
+			break;
+		case '6' : 
+			system("cls");
+			HitungTrapesium();
 			break;
 		case '7' :
 			system("cls");
@@ -143,7 +143,7 @@ void fiturDatarMenu(){
 			HitungBelahKetupat();
 			break;
 		default :
-			puts("\nMasukkan pilihan sesuai nomor!");
+			puts("\nNomor yang Anda masukkan tidak valid!");
 	}
 }
 
@@ -152,8 +152,8 @@ void fiturRuangMenu(){
 	/* I.S   : Sembarang.							*/
 	/* F.S   : Menu untuk bangun ruang ditampilkan.	*/
 	system("cls");
-	puts("\n\t\t# BANGUN RUANG #");
-	printf("\nBangun ruang yang tersedia :\n");
+	puts("\n\t\t# BANGUN RUANG #\n");
+	printf("Bangun ruang yang tersedia :\n");
 	puts("1. Balok");
 	puts("2. Kubus");
 	puts("3. Bola");
@@ -192,7 +192,26 @@ void fiturRuangMenu(){
 			HitungPrisma();
 			break;
 		default :
-			puts("\nMasukkan pilihan sesuai nomor!");
+			puts("\nNomor yang Anda masukkan tidak valid!");
+	}
+}
+
+void About(){	
+	system("cls");
+	puts("\n\t\t# About #\n");
+	puts("1. Aplikasi Kalkulator");
+	puts("2. Identitas Developer");
+	puts("\nMasukkan pilihan sesuai nomor : ");
+	switch(getch()) {	
+	    case '1' :
+	    	system("cls");
+			break;
+		case '2' :
+			system("cls");
+			break;
+		default :
+			puts("\nNomor yang Anda masukkan tidak valid!");
+			puts("\nSilakan coba kembali :)");
 	}
 }
 
@@ -224,7 +243,7 @@ int mainMenu() {
 				fiturRuangMenu();
 				break;
 			case '4' :
-				
+				About();
 				break;
 			case '5' :
 				system("cls");

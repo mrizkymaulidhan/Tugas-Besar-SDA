@@ -123,11 +123,12 @@ void HitungJajarGenjang(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas dan keliling jajar genjang ditamplkan ke layar.	*/
 	JajarGenjang P;
-	printf("\nAlas\t\t: "); scanf("%d", &Alas(P));
-	printf("Tinggi\t\t: "); scanf("%d", &Tinggi(P));
-	printf("Sisi Miring\t: "); scanf("%d", &Sisi(P));
-	printf("\nLuas \t = %.2f", LuasJajarGenjang(P));
-	printf("\nKeliling = %.2f\n", KelilingJajarGenjang(P));
+	printf("\n\t\t# BANGUN DATAR JAJAR GENJANG #\n");
+	printf("\nAlas Jajar Genjang\t  : "); scanf("%d", &Alas(P));
+	printf("Tinggi Jajar Genjang\t  : "); scanf("%d", &Tinggi(P));
+	printf("Sisi Miring Jajar Genjang : "); scanf("%d", &Sisi(P));
+	printf("\nLuas Jajar Genjang\t  = %.2f", LuasJajarGenjang(P));
+	printf("\nKeliling\t\t  = %.2f\n", KelilingJajarGenjang(P));
 }
 
 float LuasTrapesium(Trapesium P){
@@ -149,13 +150,14 @@ void HitungTrapesium(){
 	/* I.S   : Sembarang.															*/
 	/* F.S   : Hasil perhitungan luas dan keliling trapesium ditamplkan ke layar.	*/
 	Trapesium P;
-	printf("\nSisi Sejajar 1\t: "); scanf("%d", &SisiSejajar1(P));
-	printf("Sisi Sejajar 2\t: "); scanf("%d", &SisiSejajar2(P));
-	printf("Tinggi\t\t: "); scanf("%d", &Tinggi(P));
-	printf("Sisi3\t\t: "); scanf("%d", &Sisi1(P));
-	printf("Sisi4\t\t: "); scanf("%d", &Sisi2(P));
-	printf("\nLuas \t = %.2f", LuasTrapesium(P));
-	printf("\nKeliling = %.2f\n", KelilingTrapesium(P));
+	printf("\n\t\t# BANGUN DATAR TRAPESIUM #\n");
+	printf("\nSisi Sejajar 1 Trapesium : "); scanf("%d", &SisiSejajar1(P));
+	printf("Sisi Sejajar 2 Trapesium : "); scanf("%d", &SisiSejajar2(P));
+	printf("Tinggi Trapesium\t : "); scanf("%d", &Tinggi(P));
+	printf("Sisi Kiri Trapesium\t : "); scanf("%d", &Sisi1(P));
+	printf("Sisi Kanan Trapesium\t : "); scanf("%d", &Sisi2(P));
+	printf("\nLuas Trapesium\t\t = %.2f", LuasTrapesium(P));
+	printf("\nKeliling Trapesium\t = %.2f\n", KelilingTrapesium(P));
 }
 
 float LuasLayangLayang(LayangLayang P){
@@ -177,12 +179,13 @@ void HitungLayangLayang(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas dan keliling layang-layang ditamplkan ke layar.	*/
 	LayangLayang P;
-	printf("\nDiagonal1\t: "); scanf("%d", &Diagonal1(P));
-	printf("Diagonal2\t: "); scanf("%d", &Diagonal2(P));
-	printf("Sisi Miring1\t: "); scanf("%d", &Sisi1(P));
-	printf("Sisi Miring2\t: "); scanf("%d", &Sisi2(P));
-	printf("\nLuas \t = %.2f", LuasLayangLayang(P));
-	printf("\nKeliling = %.2f\n", KelilingLayangLayang(P));
+	printf("\n\t\t# BANGUN DATAR LAYANG-LAYANG #\n");
+	printf("\nDiagonal 1 Layang-layang\t: "); scanf("%d", &Diagonal1(P));
+	printf("Diagonal 2 Layang-layang\t: "); scanf("%d", &Diagonal2(P));
+	printf("Sisi Miring Kiri Layang-layang\t: "); scanf("%d", &Sisi1(P));
+	printf("Sisi Miring Kanan Layang-layang\t: "); scanf("%d", &Sisi2(P));
+	printf("\nLuas Layang-layang\t\t= %.2f", LuasLayangLayang(P));
+	printf("\nKeliling Layang-layang\t\t= %.2f\n", KelilingLayangLayang(P));
 }
 
 float LuasBelahKetupat(BelahKetupat P){
@@ -204,9 +207,10 @@ void HitungBelahKetupat(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas dan keliling belah ketupat ditamplkan ke layar.	*/
 	BelahKetupat P;
-	printf("\nDiagonal1\t: "); scanf("%d", &Diagonal1(P));
-	printf("Diagonal2\t: "); scanf("%d", &Diagonal2(P));
-	printf("Sisi\t\t: "); scanf("%d", &Sisi(P));
-	printf("\nLuas \t = %.2f", LuasBelahKetupat(P));
-	printf("\nKeliling = %.2f\n", KelilingBelahKetupat(P));
+	printf("\n\t\t# BANGUN DATAR BELAH KETUPAT #\n");
+	printf("\nDiagonal 1 Belah Ketupat : "); scanf("%d", &Diagonal1(P));
+	printf("Diagonal 2 Belah Ketupat : "); scanf("%d", &Diagonal2(P));
+	printf("Sisi Belah Ketupat\t : "); scanf("%d", &Sisi(P));
+	printf("\nLuas Belah Ketupat \t = %.2f", LuasBelahKetupat(P));
+	printf("\nKeliling Layang-layang   = %.2f\n", KelilingBelahKetupat(P));
 }
