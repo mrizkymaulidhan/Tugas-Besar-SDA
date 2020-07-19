@@ -102,13 +102,13 @@ void PrintInfoTree(BinTree P) {
 	}
 }
 
-int toInt(String X) {
+float toFloat(String X) {
 	/* Melakukan casting terhadap sebuah String menjadi integer,
 	   lalu mengembalikannya.										*/
 	/* I.S   : X adalah String terdefinisi.							*/
 	/* F.S   : Integer hasil casting terhadap X dikirimkan.			*/
 	
-	return atoi(X);
+	return atof(X);
 }
 
 boolean isOperator(char c) { 
@@ -161,6 +161,7 @@ void InfixToPostfix(String infix, String postfix) {
     size=strlen(infix);
     for(i=0; i<size; i++) {
         switch(infix[i]) {
+        	case '.':
             case '0':
             case '1':
             case '2':
@@ -210,7 +211,6 @@ void InfixToPostfix(String infix, String postfix) {
                 pushStackChar(&tmp,infix[i]);
                 break;
         }
-        
     }
     while(!isEmptyStackChar(tmp)) {
         popStackChar(&tmp,&tmpchar);
@@ -232,7 +232,7 @@ float CalculateTree(BinTree P) {
         return 0;  
 	}
     else if (IsEmptyTree(Left(P)) && IsEmptyTree(Right(P))) {
-        return toInt(Info(P));  
+        return toFloat(Info(P));  
     }
   
     float left = CalculateTree(Left(P));  

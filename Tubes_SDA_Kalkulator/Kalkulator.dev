@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=8
+UnitCount=12
 
 [VersionInfo]
 Major=1
@@ -101,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=Library\Tree\boolean.h
+FileName=Library\BangunDatar\BangunDatar.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -121,7 +121,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=main.c
+FileName=Library\BangunDatar\BangunDatar.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -142,6 +142,26 @@ BuildCmd=
 
 [Unit7]
 FileName=main.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit12]
+FileName=Library\Kalkulator\kalkulator.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=Library\Kalkulator\kalkulator.h
 CompileCpp=0
 Folder=
 Compile=1
