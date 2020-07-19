@@ -4,6 +4,7 @@
 #include "../Tree/bintree.h"
 #include "../Stack/stackTree.h"
 #include "../BangunDatar/BangunDatar.h"
+#include "../BangunRuang/BangunRuang.h"
 
 BinTree BuildExpressionTree(infotypeTree postfix);
 /* Membuat sebuah Expression Tree dari ekspresi postfix.	*/
@@ -11,11 +12,23 @@ BinTree BuildExpressionTree(infotypeTree postfix);
 /* F.S   : Expression Tree dikembalikan.					*/
 
 void kalkulatorMenu();
+/* Menampilkan menu untuk kalkulator.			*/
+/* I.S   : Sembarang.							*/
+/* F.S   : Menu untuk kalkulator ditampilkan.	*/
 
-void fiturMenu();
+void fiturDatarMenu();
+/* Menampilkan menu untuk bangun datar.			*/
+/* I.S   : Sembarang.							*/
+/* F.S   : Menu untuk bangun datar ditampilkan.	*/
 
 void fiturRuangMenu();
+/* Menampilkan menu untuk bangun ruang.			*/
+/* I.S   : Sembarang.							*/
+/* F.S   : Menu untuk bangun ruang ditampilkan.	*/
 
 int mainMenu();
+/* Menampilkan menu utama aplikasi ini.			*/
+/* I.S   : Sembarang.							*/
+/* F.S   : Menu utama aplikasi ditampilkan.		*/
 
 #endif

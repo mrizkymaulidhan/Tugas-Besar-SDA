@@ -28,6 +28,22 @@ BinTree BuildExpressionTree(infotypeTree postfix) {
 			}
 			pushStackTree(&StackT, ExpTree);
 		} 
+		else if((postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]!=' ' && postfix[i+2]!=' ' && !isOperator(postfix[i+2])) || 
+				(postfix[i]=='-' && postfix[i-1]!=' ' && postfix[i+1]==' ') || 
+				(postfix[i]=='-' && postfix[i-1]!=' ' && isOperator(postfix[i+1])) ||
+				(postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]==' ')) { 
+			tempOpr[0]=postfix[i];
+			newNodeTree(&ExpTree, tempOpr);
+		
+			Right = Info(Top(StackT));
+			popStackTree(&StackT, &emptyDel);
+							 
+			newNodeTree(&Left, "0");
+			
+			MakeTree(tempOpr, Left, Right, &ExpTree);
+			
+			pushStackTree(&StackT, ExpTree); 
+		}
 		else if(postfix[i]!=' ') { 
 			tempOpr[0]=postfix[i];
 			newNodeTree(&ExpTree, tempOpr);
@@ -50,28 +66,36 @@ BinTree BuildExpressionTree(infotypeTree postfix) {
 }
 
 void kalkulatorMenu() {
+	/* Menampilkan menu untuk kalkulator.			*/
+	/* I.S   : Sembarang.							*/
+	/* F.S   : Menu untuk kalkulator ditampilkan.	*/
 	String input, postfix;
 	BinTree ex;
 	
 	system("cls");
-	//system("MODE 46,10");
-	puts("\n\t\t# KALKULATOR #\n");
-	printf("INSTRUKSI AWAL :");
-		printf("\n1. Gunakan '^' untuk melakukan operasi perpangkatan");
-		printf("\n2. Gunakan '*' untuk melakukan operasi perkalian");
-		printf("\n3. Gunakan ':' untuk melakukan operasi pembagian");
-		printf("\n4. Gunakan '+' untuk melakukan operasi penjumlahan");
-		printf("\n5. Gunakan '-' untuk melakukan operasi pengurangan");
-		printf("\nTambahan :bisa menambahkan '( )' ke dalam operasi perhitungan");
-		
-	printf("\n\nSilakan lakukan perhitungan :\n"); scanf(" %s",input);
+	puts("\t\t# KALKULATOR #\n");
+	printf("PETUNJUK : ");
+	printf("\n1. Gunakan '^' untuk melakukan operasi perpangkatan.");
+	printf("\n2. Gunakan '*' atau 'x' untuk melakukan operasi perkalian.");
+	printf("\n3. Gunakan ':' atau '/' untuk melakukan operasi pembagian.");
+	printf("\n4. Gunakan '+' untuk melakukan operasi penjumlahan.");
+	printf("\n5. Gunakan '-' untuk melakukan operasi pengurangan.");
+	printf("\n6. Bisa menambahkan '( dan )' ke dalam operasi perhitungan.");
+	printf("\n7. Bilangan yang berlaku adalah bilangan positif, negatif, dan desimal.");
+	printf("\n\n");
+	system("PAUSE");
+	system("cls");
+	printf("Lakukan perhitungan :\n\n"); scanf(" %s",input);
 	InfixToPostfix(input, postfix);
 	printf("\n");
 	ex = BuildExpressionTree(postfix);
 	printf("= %.2f\n", CalculateTree(ex)); 
 }
 
-void fiturMenu(){	
+void fiturDatarMenu(){	
+	/* Menampilkan menu untuk bangun datar.			*/
+	/* I.S   : Sembarang.							*/
+	/* F.S   : Menu untuk bangun datar ditampilkan.	*/
 	system("cls");
 	puts("\n\t\t# BANGUN DATAR #");
 	printf("\nBangun datar yang tersedia :\n");
@@ -119,14 +143,16 @@ void fiturMenu(){
 			HitungBelahKetupat();
 			break;
 		default :
-			puts("\nBYE-BYE! See You Later..");
+			puts("\nMasukkan pilihan sesuai nomor!");
 	}
 }
 
-//taa's
 void fiturRuangMenu(){	
+	/* Menampilkan menu untuk bangun ruang.			*/
+	/* I.S   : Sembarang.							*/
+	/* F.S   : Menu untuk bangun ruang ditampilkan.	*/
 	system("cls");
-	puts("\n\t\t# BANGUN RUANG #\n");
+	puts("\n\t\t# BANGUN RUANG #");
 	printf("\nBangun ruang yang tersedia :\n");
 	puts("1. Balok");
 	puts("2. Kubus");
@@ -135,7 +161,7 @@ void fiturRuangMenu(){
 	puts("5. Tabung");
 	puts("6. Limas Segiempat");
 	puts("7. Prisma Segitiga");
-	puts("Masukkan pilihan sesuai nomor : ");
+	puts("\nMasukkan pilihan sesuai nomor : ");
 	switch(getch()) {	
 	    case '1' :
 	    	system("cls");
@@ -166,12 +192,15 @@ void fiturRuangMenu(){
 			HitungPrisma();
 			break;
 		default :
-			puts("\nBYE-BYE! See You Later..");
+			puts("\nMasukkan pilihan sesuai nomor!");
 	}
 }
 
 
 int mainMenu() {
+	/* Menampilkan menu utama aplikasi ini.			*/
+	/* I.S   : Sembarang.							*/
+	/* F.S   : Menu utama aplikasi ditampilkan.		*/
 	int i;
 	
 	while(i<=100) {
@@ -189,7 +218,7 @@ int mainMenu() {
 		    	kalkulatorMenu();
 				break;
 			case '2' : 
-				fiturMenu();
+				fiturDatarMenu();
 				break;
 			case '3' : 
 				fiturRuangMenu();
@@ -198,9 +227,11 @@ int mainMenu() {
 				
 				break;
 			case '5' :
+				system("cls");
+				puts("\nBYE-BYE! See You Later..");
 				return 0;
 			default :
-				puts("\nBYE-BYE! See You Later..");
+				puts("\nMasukkan pilihan sesuai nomor!");
 		}
 		printf("\n");
 		system("PAUSE");
