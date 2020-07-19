@@ -28,13 +28,26 @@ BinTree BuildExpressionTree(infotypeTree postfix) {
 			}
 			pushStackTree(&StackT, ExpTree);
 		} 
+		else if(postfix[i]=='-' && isOperator(postfix[i-4])) { 
+			tempOpr[0]=postfix[i];
+			newNodeTree(&ExpTree, tempOpr);
+		
+			Right = Info(Top(StackT));
+			popStackTree(&StackT, &emptyDel);
+							 
+			Left = Info(Top(StackT));
+			popStackTree(&StackT, &emptyDel);
+			
+			MakeTree(tempOpr, Left, Right, &ExpTree);
+			
+			pushStackTree(&StackT, ExpTree); 
+		} 
 		else if((postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]!=' ' && postfix[i+2]!=' ' && !isOperator(postfix[i+2])) || 
 				(postfix[i]=='-' && postfix[i-1]!=' ' && postfix[i+1]==' ') || 
 				(postfix[i]=='-' && postfix[i-1]!=' ' && isOperator(postfix[i+1])) ||
 				(postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]==' ') ||
-				 postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]!=' ' && isOperator(postfix[i+2]) ||
-				 postfix[i]=='-' && postfix[i-1]!=' ' && isOperator(postfix[i+1]) && isOperator(postfix[i+2]) ||
-				 postfix[i]=='-' && isOperator(postfix[i-1]) && postfix[i-2]!=' ') { 
+				(postfix[i]=='-' && postfix[i-1]==' ' && postfix[i+1]!=' ' && isOperator(postfix[i+2])) ||
+				(postfix[i]=='-' && postfix[i-1]!=' ' && isOperator(postfix[i+1]) && isOperator(postfix[i+2]) )) { 
 			tempOpr[0]=postfix[i];
 			newNodeTree(&ExpTree, tempOpr);
 		

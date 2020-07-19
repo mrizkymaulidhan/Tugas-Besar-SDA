@@ -100,7 +100,7 @@ float VolumeKerucut(Kerucut P) {
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
 	
-	return 1/3*3.14*Radius(P)*Radius(P)*Tinggi(P);
+	return 0.33*3.14*Radius(P)*Radius(P)*Tinggi(P);
 }
 
 void HitungKerucut() {
@@ -159,7 +159,7 @@ float VolumeLimas(Limas P) {
 	/* I.S   : P terdefinisi.							*/
 	/* F.S   : Hasil perhitungan volume P dikembalikan.	*/
 	
-	return 1/3*Sisi(P)*Sisi(P)*Tinggi(P);
+	return 0.33*Sisi(P)*Sisi(P)*Tinggi(P);
 }
 
 void HitungLimas() {
