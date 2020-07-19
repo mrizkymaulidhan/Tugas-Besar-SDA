@@ -68,7 +68,7 @@ void PrintInfoTree(BinTree P);
 /* I.S   : Pohon P terdefinisi.										*/
 /* F.S   : Info-info dari setiap node pada pohon P ditampilkan.		*/
 
-float toInt(String X);
+float toFloat(String X);
 /* Melakukan casting terhadap sebuah String menjadi integer,
    lalu mengembalikannya.										*/
 /* I.S   : X adalah String terdefinisi.							*/

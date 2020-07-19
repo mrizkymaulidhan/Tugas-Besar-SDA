@@ -16,7 +16,6 @@ typedef struct tElmSC{
     infotypeStackChar info;
     addressStackChar next;
 }elmStackChar;
-
 typedef struct{
     addressStackChar top;
 }stackChar;
