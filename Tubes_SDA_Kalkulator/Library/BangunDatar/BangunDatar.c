@@ -20,10 +20,11 @@ void HitungPersegiPanjang(){
 	/* F.S   : Hasil perhitungan luas dan keliling persegi panjang ditamplkan ke layar.	*/
 
 	PersegiPanjang P;
-	printf("\nPanjang\t: "); scanf("%d", &Panjang(P));
-	printf("Lebar\t: "); scanf("%d", &Lebar(P));
-	printf("\nLuas \t = %.2f", LuasPersegiPanjang(P));
-	printf("\nKeliling = %.2f\n", KelilingPersegiPanjang(P));
+	printf("\n\t\t# BANGUN DATAR PERSEGI PANJANG #\n");
+	printf("\nPanjang Persegi Panjang\t : "); scanf("%d", &Panjang(P));
+	printf("Lebar Persegi Panjang\t : "); scanf("%d", &Lebar(P));
+	printf("\nLuas Persegi Panjang\t = %.2f", LuasPersegiPanjang(P));
+	printf("\nKeliling Persegi Panjang = %.2f\n", KelilingPersegiPanjang(P));
 }
 
 float LuasPersegi(Persegi P){
@@ -45,9 +46,10 @@ void HitungPersegi(){
 	/* I.S   : Sembarang.														*/
 	/* F.S   : Hasil perhitungan luas dan keliling persegi ditamplkan ke layar.	*/
 	Persegi P;
-	printf("\nSisi\t: "); scanf("%d", &Sisi(P));
-	printf("\nLuas \t = %.2f", LuasPersegi(P));
-	printf("\nKeliling = %.2f\n", KelilingPersegi(P));
+	printf("\n\t\t# BANGUN DATAR PERSEGI #\n");
+	printf("\nSisi Persegi\t : "); scanf("%d", &Sisi(P));
+	printf("\nLuas Persegi\t = %.2f", LuasPersegi(P));
+	printf("\nKeliling Persegi = %.2f\n", KelilingPersegi(P));
 }
 
 float LuasLingkaran(Lingkaran P){
@@ -69,9 +71,10 @@ void HitungLingkaran(){
 	/* I.S   : Sembarang.															*/
 	/* F.S   : Hasil perhitungan luas dan keliling lingkaran ditamplkan ke layar.	*/
 	Lingkaran P;
-	printf("\nRadius\t: "); scanf("%d", &Radius(P));
-	printf("\nLuas \t = %.2f", LuasLingkaran(P));
-	printf("\nKeliling = %.2f\n", KelilingLingkaran(P));
+	printf("\n\t\t# BANGUN DATAR LINGKARAN #\n");
+	printf("\nRadius Lingkaran\t: "); scanf("%d", &Radius(P));
+	printf("\nLuas Lingkaran\t\t= %.2f", LuasLingkaran(P));
+	printf("\nKeliling Lingkaran\t= %.2f\n", KelilingLingkaran(P));
 }
 
 float LuasSegitiga(Segitiga P){
@@ -93,11 +96,12 @@ void HitungSegitiga(){
 	/* I.S   : Sembarang.															*/
 	/* F.S   : Hasil perhitungan luas dan keliling segitiga ditamplkan ke layar.	*/
 	Segitiga P;
-	printf("\nAlas\t\t: "); scanf("%d", &Alas(P));
-	printf("Tinggi\t\t: "); scanf("%d", &Tinggi(P));
-	printf("Sisi Miring\t: "); scanf("%d", &Sisi(P));
-	printf("\nLuas \t = %.2f", LuasSegitiga(P));
-	printf("\nKeliling = %.2f\n", KelilingSegitiga(P));
+	printf("\n\t\t# BANGUN DATAR SEGITIGA #\n");
+	printf("\nAlas Segitiga\t\t : "); scanf("%d", &Alas(P));
+	printf("Tinggi Segitiga\t\t : "); scanf("%d", &Tinggi(P));
+	printf("Sisi Miring Segitiga\t : "); scanf("%d", &Sisi(P));
+	printf("\nLuas Segitiga\t\t = %.2f", LuasSegitiga(P));
+	printf("\nKeliling Segitiga\t = %.2f\n", KelilingSegitiga(P));
 }
 
 float LuasJajarGenjang(JajarGenjang P){

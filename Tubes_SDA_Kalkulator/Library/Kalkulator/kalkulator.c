@@ -54,9 +54,17 @@ void kalkulatorMenu() {
 	BinTree ex;
 	
 	system("cls");
-	system("MODE 46,10");
-	puts("\t\t# KALKULATOR #\n");
-	scanf(" %s",input);
+	//system("MODE 46,10");
+	puts("\n\t\t# KALKULATOR #\n");
+	printf("INSTRUKSI AWAL :");
+		printf("\n1. Gunakan '^' untuk melakukan operasi perpangkatan");
+		printf("\n2. Gunakan '*' untuk melakukan operasi perkalian");
+		printf("\n3. Gunakan ':' untuk melakukan operasi pembagian");
+		printf("\n4. Gunakan '+' untuk melakukan operasi penjumlahan");
+		printf("\n5. Gunakan '-' untuk melakukan operasi pengurangan");
+		printf("\nTambahan :bisa menambahkan '( )' ke dalam operasi perhitungan");
+		
+	printf("\n\nSilakan lakukan perhitungan :\n"); scanf(" %s",input);
 	InfixToPostfix(input, postfix);
 	printf("\n");
 	ex = BuildExpressionTree(postfix);
@@ -65,16 +73,18 @@ void kalkulatorMenu() {
 
 void fiturMenu(){	
 	system("cls");
-	puts("\t # BANGUN DATAR #\n");
+	puts("\n\t\t# BANGUN DATAR #");
+	printf("\nBangun datar yang tersedia :\n");
 	puts("1. Persegi Panjang");
 	puts("2. Persegi");
-	puts("3. Trapesium");
-	puts("4. JajarGenjang");
-	puts("5. Layang-Layang");
-	puts("6. Belah Ketupat");
-	puts("7. Segitiga");
-	puts("8. Lingkaran");
-	puts("Pilihan : ");
+	puts("3. Lingkaran");
+	puts("4. Segitiga");
+	puts("5. Trapesium");
+	puts("6. JajarGenjang");
+	puts("7. Layang-Layang");
+	puts("8. Belah Ketupat");
+	
+	puts("\nMasukkan pilihan sesuai nomor : ");
 	switch(getch()) {	
 	    case '1' :
 	    	system("cls");
@@ -84,47 +94,96 @@ void fiturMenu(){
 			system("cls");
 			HitungPersegi();
 			break;
-		case '3' : 
-			system("cls");
-			HitungTrapesium();
-			break;
-		case '4' :
-			system("cls");
-			HitungJajarGenjang(); 
-			break;
-		case '5' :
-			system("cls");
-			HitungLayangLayang();
-			break;
-		case '6' :
-			system("cls"); 
-			HitungBelahKetupat();
-			break;
-		case '7' :
-			system("cls");
-			HitungSegitiga();
-			break;
-		case '8' :
+		case '3' :
 			system("cls"); 
 			HitungLingkaran();
 			break;
+		case '4' :
+			system("cls");
+			HitungSegitiga();
+			break;
+		case '5' : 
+			system("cls");
+			HitungTrapesium();
+			break;
+		case '6' :
+			system("cls");
+			HitungJajarGenjang(); 
+			break;
+		case '7' :
+			system("cls");
+			HitungLayangLayang();
+			break;
+		case '8' :
+			system("cls"); 
+			HitungBelahKetupat();
+			break;
 		default :
-			puts("\nMasukkan pilihan sesuai nomor!");
+			puts("\nBYE-BYE! See You Later..");
 	}
 }
+
+//taa's
+void fiturRuangMenu(){	
+	system("cls");
+	puts("\n\t\t# BANGUN RUANG #\n");
+	printf("\nBangun ruang yang tersedia :\n");
+	puts("1. Balok");
+	puts("2. Kubus");
+	puts("3. Bola");
+	puts("4. Kerucut");
+	puts("5. Tabung");
+	puts("6. Limas Segiempat");
+	puts("7. Prisma Segitiga");
+	puts("Masukkan pilihan sesuai nomor : ");
+	switch(getch()) {	
+	    case '1' :
+	    	system("cls");
+	    	HitungBalok();
+			break;
+		case '2' :
+			system("cls");
+			HitungKubus();
+			break;
+		case '3' : 
+			system("cls");
+			HitungBola();
+			break;
+		case '4' :
+			system("cls");
+			HitungKerucut(); 
+			break;
+		case '5' :
+			system("cls");
+			HitungTabung();
+			break;
+		case '6' :
+			system("cls"); 
+			HitungLimas();
+			break;
+		case '7' :
+			system("cls");
+			HitungPrisma();
+			break;
+		default :
+			puts("\nBYE-BYE! See You Later..");
+	}
+}
+
 
 int mainMenu() {
 	int i;
 	
 	while(i<=100) {
-		system("MODE 34,19");
-		puts("\tAPLIKASI KALULATOR\t");
-		puts("\n\t    MAIN MENU\n");
+		//system("MODE 34,19");
+		puts("\n=`=`=`=`=`=`=`=`=`=APLIKASI KALULATOR=`=`=`=`=`=`=`=`=`=");
+		puts("\n*** MAIN MENU ***");
 		puts("1. Kalkulator");
 		puts("2. Bangun Datar");
-		puts("3. About");
-		puts("4. Exit");
-		puts("Pilihan : ");
+		puts("3. Bangun Ruang");
+		puts("4. About");
+		puts("5. Exit");
+		puts("Masukkan pilihan sesuai nomor : ");
 		switch(getch()) {	
 		    case '1' :
 		    	kalkulatorMenu();
@@ -133,11 +192,15 @@ int mainMenu() {
 				fiturMenu();
 				break;
 			case '3' : 
+				fiturRuangMenu();
 				break;
 			case '4' :
+				
+				break;
+			case '5' :
 				return 0;
 			default :
-				puts("\nMasukkan pilihan sesuai nomor!");
+				puts("\nBYE-BYE! See You Later..");
 		}
 		printf("\n");
 		system("PAUSE");

@@ -1,14 +1,14 @@
 # Project: Kalkulator
-# Makefile created by Dev-C++ 5.9.2
+# Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = Library/Stack/stackChar.o Library/Stack/stackTree.o Library/Tree/bintree.o main.o Library/BangunDatar/BangunDatar.o Library/Kalkulator/kalkulator.o
-LINKOBJ  = Library/Stack/stackChar.o Library/Stack/stackTree.o Library/Tree/bintree.o main.o Library/BangunDatar/BangunDatar.o Library/Kalkulator/kalkulator.o
+OBJ      = Library/Stack/stackChar.o Library/Stack/stackTree.o Library/Tree/bintree.o main.o Library/BangunDatar/BangunDatar.o Library/Kalkulator/kalkulator.o Library/BangunRuang/BangunRuang.o
+LINKOBJ  = Library/Stack/stackChar.o Library/Stack/stackTree.o Library/Tree/bintree.o main.o Library/BangunDatar/BangunDatar.o Library/Kalkulator/kalkulator.o Library/BangunRuang/BangunRuang.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
-INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
-CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Kalkulator.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
@@ -41,3 +41,6 @@ Library/BangunDatar/BangunDatar.o: Library/BangunDatar/BangunDatar.c
 
 Library/Kalkulator/kalkulator.o: Library/Kalkulator/kalkulator.c
 	$(CC) -c Library/Kalkulator/kalkulator.c -o Library/Kalkulator/kalkulator.o $(CFLAGS)
+
+Library/BangunRuang/BangunRuang.o: Library/BangunRuang/BangunRuang.c
+	$(CC) -c Library/BangunRuang/BangunRuang.c -o Library/BangunRuang/BangunRuang.o $(CFLAGS)

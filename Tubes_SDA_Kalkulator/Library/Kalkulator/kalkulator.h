@@ -14,6 +14,8 @@ void kalkulatorMenu();
 
 void fiturMenu();
 
+void fiturRuangMenu();
+
 int mainMenu();
 
 #endif
