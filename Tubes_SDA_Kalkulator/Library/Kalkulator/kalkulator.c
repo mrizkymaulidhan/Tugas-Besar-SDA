@@ -73,7 +73,7 @@ void kalkulatorMenu() {
 	BinTree ex;
 	
 	system("cls");
-	puts("\t\t# KALKULATOR #\n");
+	puts("\n\t\t# KALKULATOR #\n");
 	printf("PETUNJUK : ");
 	printf("\n1. Gunakan '^' untuk melakukan operasi perpangkatan.");
 	printf("\n2. Gunakan '*' atau 'x' untuk melakukan operasi perkalian.");
@@ -81,10 +81,11 @@ void kalkulatorMenu() {
 	printf("\n4. Gunakan '+' untuk melakukan operasi penjumlahan.");
 	printf("\n5. Gunakan '-' untuk melakukan operasi pengurangan.");
 	printf("\n6. Bisa menambahkan '( dan )' ke dalam operasi perhitungan.");
-	printf("\n7. Bilangan yang berlaku adalah bilangan positif, negatif, dan desimal.");
+	printf("\n7. Bilangan yang berlaku adalah bilangan bulat (bilangan negatif, nol, dan bilangan positif) dan bilngan desimal.");
 	printf("\n\n");
 	system("PAUSE");
 	system("cls");
+	puts("\n\t\t# KALKULATOR #\n");
 	printf("Lakukan perhitungan :\n\n"); scanf(" %s",input);
 	InfixToPostfix(input, postfix);
 	printf("\n");
@@ -144,6 +145,7 @@ void fiturDatarMenu(){
 			break;
 		default :
 			puts("\nNomor yang Anda masukkan tidak valid!");
+			puts("Silakan coba kembali :)");
 	}
 }
 
@@ -193,25 +195,26 @@ void fiturRuangMenu(){
 			break;
 		default :
 			puts("\nNomor yang Anda masukkan tidak valid!");
+			puts("Silakan coba kembali :)");
 	}
 }
 
 void About(){	
 	system("cls");
-	puts("\n\t\t# About #\n");
+	puts("\n\t\t# ABOUT #\n");
 	puts("1. Aplikasi Kalkulator");
 	puts("2. Identitas Developer");
 	puts("\nMasukkan pilihan sesuai nomor : ");
 	switch(getch()) {	
 	    case '1' :
-	    	system("cls");
+	    	AplKalkulator();
 			break;
 		case '2' :
-			system("cls");
+			Identitas();
 			break;
 		default :
 			puts("\nNomor yang Anda masukkan tidak valid!");
-			puts("\nSilakan coba kembali :)");
+			puts("Silakan coba kembali :)");
 	}
 }
 
@@ -249,7 +252,7 @@ int mainMenu() {
 				puts("\nBYE-BYE! See You Later..");
 				return 0;
 			default :
-				puts("\nMasukkan pilihan sesuai nomor!");
+				puts("\nNomor yang Anda masukkan tidak valid!");
 		}
 		printf("\n");
 		system("PAUSE");
