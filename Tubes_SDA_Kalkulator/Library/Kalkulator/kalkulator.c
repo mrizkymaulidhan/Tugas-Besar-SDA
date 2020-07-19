@@ -215,7 +215,6 @@ void About(){
 	}
 }
 
-
 int mainMenu() {
 	/* Menampilkan menu utama aplikasi ini.			*/
 	/* I.S   : Sembarang.							*/
