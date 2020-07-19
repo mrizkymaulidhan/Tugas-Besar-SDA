@@ -79,8 +79,8 @@ void fiturMenu(){
 	puts("2. Persegi");
 	puts("3. Lingkaran");
 	puts("4. Segitiga");
-	puts("5. Trapesium");
-	puts("6. JajarGenjang");
+	puts("5. Jajar Genjang");
+	puts("6. Trapesium");
 	puts("7. Layang-Layang");
 	puts("8. Belah Ketupat");
 	
@@ -102,13 +102,13 @@ void fiturMenu(){
 			system("cls");
 			HitungSegitiga();
 			break;
-		case '5' : 
-			system("cls");
-			HitungTrapesium();
-			break;
-		case '6' :
+		case '5' :
 			system("cls");
 			HitungJajarGenjang(); 
+			break;
+		case '6' : 
+			system("cls");
+			HitungTrapesium();
 			break;
 		case '7' :
 			system("cls");
@@ -119,7 +119,9 @@ void fiturMenu(){
 			HitungBelahKetupat();
 			break;
 		default :
-			puts("\nBYE-BYE! See You Later..");
+			puts("\nNomor yang Anda masukkan tidak valid!");
+			puts("\nSilakan coba kembali :)");
+			puts("BYE-BYE! See You Later..");
 	}
 }
 
@@ -127,7 +129,7 @@ void fiturMenu(){
 void fiturRuangMenu(){	
 	system("cls");
 	puts("\n\t\t# BANGUN RUANG #\n");
-	printf("\nBangun ruang yang tersedia :\n");
+	printf("Bangun ruang yang tersedia :\n");
 	puts("1. Balok");
 	puts("2. Kubus");
 	puts("3. Bola");
@@ -135,7 +137,7 @@ void fiturRuangMenu(){
 	puts("5. Tabung");
 	puts("6. Limas Segiempat");
 	puts("7. Prisma Segitiga");
-	puts("Masukkan pilihan sesuai nomor : ");
+	puts("\nMasukkan pilihan sesuai nomor : ");
 	switch(getch()) {	
 	    case '1' :
 	    	system("cls");
@@ -166,6 +168,8 @@ void fiturRuangMenu(){
 			HitungPrisma();
 			break;
 		default :
+			puts("\nNomor yang Anda masukkan tidak valid!");
+			puts("\nSilakan coba kembali :)");
 			puts("\nBYE-BYE! See You Later..");
 	}
 }

@@ -22,11 +22,12 @@ void HitungBalok(){
 	/* F.S   : Hasil perhitungan luas permukaan dan volume balok ditampilkan ke layar.	*/
 
 	Balok P;
-	printf("\nPanjang Balok\t: "); scanf("%d", &Panjang(P));
-	printf("\nLebar Balok\t: "); scanf("%d", &Lebar(P));
-	printf("\nTinggi Balok\t: "); scanf("%d", &Tinggi(P));
+	printf("\n\t\t# BANGUN RUANG BALOK #\n");
+	printf("\nPanjang Balok\t\t: "); scanf("%d", &Panjang(P));
+	printf("Lebar Balok\t\t: "); scanf("%d", &Lebar(P));
+	printf("Tinggi Balok\t\t: "); scanf("%d", &Tinggi(P));
 	printf("\nLuas Permukaan Balok\t= %.2f", LuasBalok(P));
-	printf("\nVolume Balok\t= %.2f\n", VolumeBalok(P));
+	printf("\nVolume Balok\t\t= %.2f\n", VolumeBalok(P));
 }
 
 
@@ -50,9 +51,10 @@ void HitungKubus(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume kubus ditampilkan ke layar.	*/
 	Kubus P;
-	printf("\nSisi Kubus\t: "); scanf("%d", &Sisi(P));
+	printf("\n\t\t# BANGUN RUANG KUBUS #\n");
+	printf("\nSisi Kubus\t\t: "); scanf("%d", &Sisi(P));
 	printf("\nLuas Permukaan Kubus\t= %.2f", LuasKubus(P));
-	printf("\nVolume Kubus\t= %.2f\n", VolumeKubus(P));
+	printf("\nVolume Kubus\t\t= %.2f\n", VolumeKubus(P));
 }
 
 
@@ -76,9 +78,10 @@ void HitungBola(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume bola ditampilkan ke layar.	*/
 	Bola P;
-	printf("\nRadius Bola\t: "); scanf("%d", &Radius(P));
+	printf("\n\t\t# BANGUN RUANG BOLA #\n");
+	printf("\nRadius Bola\t\t: "); scanf("%d", &Radius(P));
 	printf("\nLuas Permukaan Bola\t= %.2f", LuasBola(P));
-	printf("\nVolume Bola\t= %.2f\n", VolumeBola(P));
+	printf("\nVolume Bola\t\t= %.2f\n", VolumeBola(P));
 }
 
 
@@ -102,10 +105,11 @@ void HitungKerucut(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume kerucut ditampilkan ke layar.*/
 	Kerucut P;
-	printf("\nRadius Kerucut\t: "); scanf("%d", &Radius(P));
-	printf("\nTinggi Kerucut\t: "); scanf("%d", &Tinggi(P));
+	printf("\n\t\t# BANGUN RUANG KERUCUT #\n");
+	printf("\nRadius Kerucut\t\t: "); scanf("%d", &Radius(P));
+	printf("Tinggi Kerucut\t\t: "); scanf("%d", &Tinggi(P));
 	printf("\nLuas Permukaan Kerucut\t= %.2f", LuasKerucut(P));
-	printf("\nVolume Kerucut\t= %.2f\n", VolumeKerucut(P));
+	printf("\nVolume Kerucut\t\t= %.2f\n", VolumeKerucut(P));
 }
 
 
@@ -129,10 +133,11 @@ void HitungTabung(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas dan keliling jajar genjang ditampilkan ke layar.	*/
 	Tabung P;
-	printf("\nRadius Tabung\t: "); scanf("%d", &Radius(P));
-	printf("Tinggi Tabung\t: "); scanf("%d", &Tinggi(P));
+	printf("\n\t\t# BANGUN RUANG TABUNG #\n");
+	printf("\nRadius Tabung\t\t: "); scanf("%d", &Radius(P));
+	printf("Tinggi Tabung\t\t: "); scanf("%d", &Tinggi(P));
 	printf("\nLuas Permukaan Tabung\t= %.2f", LuasTabung(P));
-	printf("\nVolume Tabung\t= %.2f\n", VolumeTabung(P));
+	printf("\nVolume Tabung\t\t= %.2f\n", VolumeTabung(P));
 }
 
 
@@ -156,11 +161,12 @@ void HitungLimas(){
 	/* I.S   : Sembarang.															*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume ditampilkan ke layar.	*/
 	Limas P;
-	printf("Sisi Alas Limas\t: "); scanf("%d", &Sisi(P));
-	printf("Tinggi Limas\t: "); scanf("%d", &Tinggi(P));
+	printf("\n\t\t# BANGUN RUANG LIMAS #\n");
+	printf("\nSisi Alas Limas\t\t: "); scanf("%d", &Sisi(P));
+	printf("Tinggi Limas\t\t: "); scanf("%d", &Tinggi(P));
 	printf("Tinggi Selimut Limas\t: "); scanf("%d", &Tinggi1(P));
 	printf("\nLuas Permukaan Limas\t= %.2f", LuasLimas(P));
-	printf("\nVolume Limas\t= %.2f\n", VolumeLimas(P));
+	printf("\nVolume Limas\t\t= %.2f\n", VolumeLimas(P));
 }
 
 
@@ -184,9 +190,10 @@ void HitungPrisma(){
 	/* I.S   : Sembarang.																*/
 	/* F.S   : Hasil perhitungan luas permukaan dan volume prisma ditampilkan ke layar.	*/
 	Prisma P;
-	printf("Sisi Alas Prisma\t: "); scanf("%d", &Sisi(P));
+	printf("\n\t\t# BANGUN RUANG LIMAS #\n");
+	printf("\nSisi Alas Prisma\t: "); scanf("%d", &Sisi(P));
 	printf("Tinggi Alas Prisma\t: "); scanf("%d", &Tinggi1(P));
-	printf("Tinggi Prisma\t: "); scanf("%d", &Tinggi(P));
+	printf("Tinggi Prisma\t\t: "); scanf("%d", &Tinggi(P));
 	printf("\nLuas Permukaan Prisma\t= %.2f", LuasPrisma(P));
-	printf("\nVolume Prisma\t= %.2f\n", VolumePrisma(P));
+	printf("\nVolume Prisma\t\t= %.2f\n", VolumePrisma(P));
 }
